@@ -1,13 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 14:37:19 by azaaza            #+#    #+#             */
-/*   Updated: 2023/07/14 21:12:41 by ahmadzaaza       ###   ########.fr       */
+/*   Created: 2023/07/04 18:11:01 by azaaza            #+#    #+#             */
+/*   Updated: 2023/07/15 12:48:17 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c) { return (c >= '0' && c <= '9'); }
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, '\0', n);
+}

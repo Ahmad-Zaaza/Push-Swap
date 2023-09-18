@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 15:12:00 by azaaza            #+#    #+#             */
-/*   Updated: 2023/07/18 09:57:08 by azaaza           ###   ########.fr       */
+/*   Created: 2023/07/14 21:06:04 by ahmadzaaza        #+#    #+#             */
+/*   Updated: 2023/07/20 12:18:01 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-size_t ft_strlen(const char *str) {
-  int i;
-
-  i = 0;
-  while (str[i])
-    i++;
-  return (i);
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

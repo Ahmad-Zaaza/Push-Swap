@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:06:48 by azaaza            #+#    #+#             */
-/*   Updated: 2023/07/20 12:13:01 by azaaza           ###   ########.fr       */
+/*   Created: 2023/07/11 15:58:25 by azaaza            #+#    #+#             */
+/*   Updated: 2023/07/20 12:15:56 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <sys/_types/_null.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	int		s1_len;
+	int		s2_len;
 	char	*str;
-	size_t	s_len;
-	size_t	i;
+	int		i;
+	int		j;
 
-	if (!s)
+	if (!s1 || !s2)
 		return (NULL);
-	i = 0;
-	s_len = ft_strlen(s);
-	if (start > s_len)
-		len = 0;
-	else if (len > (s_len - start))
-		len = s_len - start;
-	str = (char *)malloc(len + 1);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	str = (char *)malloc(s1_len + s2_len + 1);
 	if (!str)
 		return (NULL);
-	while (i < len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = '\0';
+	i = 0;
+	j = 0;
+	while (s1[i])
+		str[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		str[j++] = s2[i++];
+	str[j] = '\0';
 	return (str);
 }
