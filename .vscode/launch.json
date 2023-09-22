@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "name": "Debug",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "args": [
+                "17",
+                "25",
+                "2"
+            ],
+            "cwd": "${workspaceFolder}",
+        }
+    ]
+}

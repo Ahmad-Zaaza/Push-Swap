@@ -1,5 +1,6 @@
 #include "libft/libft.h"
 #include "push_swap.h"
+#include <stdio.h>
 
 static int check_duplicates(t_args_queue *queue) {
   t_arg_node *tmp;
@@ -37,6 +38,15 @@ static int validate_and_populate_str(char *str, t_args_queue *queue) {
   return (1);
 }
 
+static int get_num_args(char **str) {
+  int i;
+
+  i = 0;
+  while (str[i])
+    i++;
+  return (i);
+}
+
 // checks if the string only contains digits and optional sign
 static int is_str_digit(char *str) {
   int i;
@@ -51,7 +61,7 @@ static int is_str_digit(char *str) {
 
   while (str[i]) {
     if (!ft_isdigit(str[i])) {
-      ft_putstr_fd("Error\n", 2);
+      ft_putstr_fd("Error\n", 2); 
       ft_putstr_fd("Invalid argument, found non integer character.\n", 2);
       return 0;
     }
@@ -62,16 +72,18 @@ static int is_str_digit(char *str) {
 
 static void check_args(char **str, t_args_queue *args_queue) {
   int i;
+  int size;
 
-  i = 0;
-  while (str[i]) {
+  size = get_num_args(str);
+  i = size - 1;
+  while (i >= 0) {
     if (!is_str_digit(str[i]) ||
         !validate_and_populate_str(str[i], args_queue) ||
         !check_duplicates(args_queue)) {
       cleanup_queue(args_queue);
       exit(1);
     }
-    i++;
+    i--;
   }
 }
 

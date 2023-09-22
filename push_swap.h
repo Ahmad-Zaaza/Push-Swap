@@ -5,8 +5,9 @@
 #define INT_MIN -2147483648
 
 #include "./libft/libft.h"
-#include "stdlib.h"
-#include "unistd.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 typedef struct s_stack_node {
   int data;
@@ -36,5 +37,11 @@ void validate_args(int argc, char **argv, t_args_queue *args_queue);
 // queue
 void init_queue(t_args_queue *queue);
 void enqueue(t_args_queue *queue, int value);
+int dequeue(t_args_queue *queue);
 void cleanup_queue(t_args_queue *args_queue);
+int get_queue_size(t_args_queue *queue);
+// stack
+void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue);
+void print_stack(t_stack *stack);
+void clean_stack(t_stack *stack);
 #endif
