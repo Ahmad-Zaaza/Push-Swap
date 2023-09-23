@@ -1,9 +1,9 @@
 NAME = push_swap
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -fno-omit-frame-pointer -g3
 
-SRCS = push_swap.c args_validation.c args_queue.c stack.c
+SRCS = push_swap.c args_validation.c args_validation_utils.c args_queue.c stack.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 

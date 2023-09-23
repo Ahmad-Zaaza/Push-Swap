@@ -32,7 +32,11 @@ typedef struct s_args_queue {
   t_arg_node *tail;
 } t_args_queue;
 
+// validation
 void validate_args(int argc, char **argv, t_args_queue *args_queue);
+int get_num_args(char **str);
+int is_str_digit(char *str);
+void cleanup_splitted(char **str, int size);
 
 // queue
 void init_queue(t_args_queue *queue);

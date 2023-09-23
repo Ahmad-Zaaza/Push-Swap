@@ -18,7 +18,6 @@ static int check_duplicates(t_args_queue *queue) {
       }
       tmp2 = tmp2->next;
     }
-
     tmp = tmp->next;
   }
   return (1);
@@ -38,49 +37,16 @@ static int validate_and_populate_str(char *str, t_args_queue *queue) {
   return (1);
 }
 
-static int get_num_args(char **str) {
+static void check_args(int size, char **str, t_args_queue *args_queue) {
   int i;
 
-  i = 0;
-  while (str[i])
-    i++;
-  return (i);
-}
-
-// checks if the string only contains digits and optional sign
-static int is_str_digit(char *str) {
-  int i;
-
-  i = 0;
-  if (!str[i]) {
-    ft_putstr_fd("Error\n", 2);
-    return (0);
-  }
-  if (str[i] == '-' || str[i] == '+')
-    i++;
-
-  while (str[i]) {
-    if (!ft_isdigit(str[i])) {
-      ft_putstr_fd("Error\n", 2); 
-      ft_putstr_fd("Invalid argument, found non integer character.\n", 2);
-      return 0;
-    }
-    i++;
-  }
-  return 1;
-}
-
-static void check_args(char **str, t_args_queue *args_queue) {
-  int i;
-  int size;
-
-  size = get_num_args(str);
   i = size - 1;
   while (i >= 0) {
     if (!is_str_digit(str[i]) ||
         !validate_and_populate_str(str[i], args_queue) ||
         !check_duplicates(args_queue)) {
       cleanup_queue(args_queue);
+      cleanup_splitted(str, size);
       exit(1);
     }
     i--;
@@ -88,14 +54,20 @@ static void check_args(char **str, t_args_queue *args_queue) {
 }
 
 void validate_args(int argc, char **argv, t_args_queue *args_queue) {
+  char **args;
+  int size;
   if (argc == 1 || (argc == 2 && !argv[1][0]))
     exit(0);
+
   init_queue(args_queue);
   if (argc == 2) {
-    argv = ft_split(argv[1], ' ');
-
-    check_args(argv, args_queue);
+    args = ft_split(argv[1], ' ');
+    size = get_num_args(args);
+    check_args(size, args, args_queue);
   } else {
-    check_args(argv + 1, args_queue);
+    args = ft_split(*(argv + 1), ' ');
+    size = get_num_args(args);
+    check_args(size, args, args_queue);
   }
+  cleanup_splitted(args, size);
 }
