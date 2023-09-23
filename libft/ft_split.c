@@ -27,7 +27,6 @@ static int ft_count_word(char const *s, char c) {
     } else
       i++;
   }
-  printf("count: %d\n", word_count);
   return (word_count);
 }
 

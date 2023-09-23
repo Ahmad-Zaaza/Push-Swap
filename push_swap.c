@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 // void sa(t_stack_node **a) {
 //   t_stack_node *tmp;
@@ -61,8 +62,21 @@ int main(int argc, char **argv) {
   validate_args(argc, argv, &args_queue);
   init_and_populate_stack(&a, &b, &args_queue);
   // print queue
+  printf("Initial A:\n");
   print_stack(&a);
+
+  printf("After swapping A\n");
+  swap(&a, 'a', 1);
+  print_stack(&a);
+
+  push(&a, &b, 'a');
+  push(&a, &b, 'a');
+  printf("A After pushing2 items\n");
+  print_stack(&a);
+  printf("B After pushing 2 items\n");
+  print_stack(&b);
   clean_stack(&a);
+  clean_stack(&b);
   ft_putstr_fd("OK\n", 1);
 
   return 0;

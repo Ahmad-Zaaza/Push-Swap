@@ -21,14 +21,16 @@ static t_stack_node *create_stack_node(int value) {
   return (new);
 }
 
-static void push_stack_node(t_stack *stack, t_stack_node *new) {
+void push_stack_node(t_stack *stack, t_stack_node *new_node) {
+  new_node->next = NULL;
+  new_node->prev = NULL;
   if (!stack->top) {
-    stack->top = new;
-    stack->bottom = new;
+    stack->top = new_node;
+    stack->bottom = new_node;
   } else {
-    stack->top->prev = new;
-    new->next = stack->top;
-    stack->top = new;
+    stack->top->prev = new_node;
+    new_node->next = stack->top;
+    stack->top = new_node;
   }
 }
 
@@ -41,6 +43,7 @@ void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue) {
   size = get_queue_size(queue);
   init_stack(a, size);
   init_stack(b, 0);
+  printf("queue size (init and populate stack), %d\n", size);
   i = 0;
   while (i < size) {
     value = dequeue(queue);
@@ -60,6 +63,7 @@ void print_stack(t_stack *stack) {
     tmp = tmp->next;
   }
 }
+
 void clean_stack(t_stack *stack) {
   t_stack_node *tmp;
 

@@ -44,8 +44,16 @@ void enqueue(t_args_queue *queue, int value);
 int dequeue(t_args_queue *queue);
 void cleanup_queue(t_args_queue *args_queue);
 int get_queue_size(t_args_queue *queue);
+
 // stack
 void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue);
 void print_stack(t_stack *stack);
 void clean_stack(t_stack *stack);
+void push_stack_node(t_stack *stack, t_stack_node *new_node);
+
+// operations
+void print_operation(char *operation, char stack);
+void swap(t_stack *stack, char name, int print);
+void push(t_stack *from, t_stack *to, char name);
+void ss(t_stack *a, t_stack *b);
 #endif
