@@ -69,17 +69,18 @@ int main(int argc, char **argv) {
   swap(&a, 'a', 1);
   print_stack(&a);
 
-  push(&a, &b, 'a');
-  push(&a, &b, 'a');
-  printf("A After pushing 2 items\n");
+  push(&a, &b, 'b');
+  push(&a, &b, 'b');
+  push(&a, &b, 'b');
+  printf("A After pushing 3 items\n");
   print_stack(&a);
-  printf("B After pushing 2 items\n");
+  printf("B After pushing 3 items\n");
   print_stack(&b);
 
-  rr(&a, &b);
-  printf("A After rotating \n");
+  rrr(&a, &b);
+  printf("A After r_rotating \n");
   print_stack(&a);
-  printf("B After rotating \n");
+  printf("B After r_rotating \n");
   print_stack(&b);
   clean_stack(&a);
   clean_stack(&b);
