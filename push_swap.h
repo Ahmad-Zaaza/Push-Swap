@@ -44,6 +44,7 @@ void enqueue(t_args_queue *queue, int value);
 int dequeue(t_args_queue *queue);
 void cleanup_queue(t_args_queue *args_queue);
 int get_queue_size(t_args_queue *queue);
+int is_queue_sorted(t_args_queue *queue);
 
 // stack
 void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue);
