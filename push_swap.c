@@ -71,9 +71,15 @@ int main(int argc, char **argv) {
 
   push(&a, &b, 'a');
   push(&a, &b, 'a');
-  printf("A After pushing2 items\n");
+  printf("A After pushing 2 items\n");
   print_stack(&a);
   printf("B After pushing 2 items\n");
+  print_stack(&b);
+
+  rr(&a, &b);
+  printf("A After rotating \n");
+  print_stack(&a);
+  printf("B After rotating \n");
   print_stack(&b);
   clean_stack(&a);
   clean_stack(&b);

@@ -56,4 +56,6 @@ void print_operation(char *operation, char stack);
 void swap(t_stack *stack, char name, int print);
 void push(t_stack *from, t_stack *to, char name);
 void ss(t_stack *a, t_stack *b);
+void rotate(t_stack *stack, char name, int print);
+void rr(t_stack *a, t_stack *b);
 #endif
