@@ -14,3 +14,44 @@ int is_queue_sorted(t_args_queue *queue) {
   cleanup_queue(queue);
   return (1);
 }
+
+int is_stack_sorted(t_stack *stack) {
+  t_stack_node *tmp;
+  tmp = stack->top;
+  while (tmp->next) {
+    if (tmp->data > tmp->next->data) {
+      return (0);
+    }
+    tmp = tmp->next;
+  }
+  return (1);
+}
+
+int get_min(t_stack *stack) {
+  int min;
+
+  t_stack_node *node;
+  node = stack->top;
+  min = node->data;
+  while (node) {
+    if (node->data < min) {
+      min = node->data;
+    }
+    node = node->next;
+  }
+  return (min);
+}
+int get_max(t_stack *stack) {
+  int max;
+
+  t_stack_node *node;
+  node = stack->top;
+  max = node->data;
+  while (node) {
+    if (node->data > max) {
+      max = node->data;
+    }
+    node = node->next;
+  }
+  return (max);
+}

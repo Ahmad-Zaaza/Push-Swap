@@ -54,3 +54,4 @@ int get_queue_size(t_args_queue *queue) {
   }
   return (size);
 }
+

@@ -61,4 +61,10 @@ void rotate(t_stack *stack, char name, int print);
 void rr(t_stack *a, t_stack *b);
 void r_rotate(t_stack *stack, char name, int print);
 void rrr(t_stack *a, t_stack *b);
+
+// sort
+void sort_three(t_stack *stack, char stack_name);
+int get_max(t_stack *stack);
+int get_min(t_stack *stack);
+int is_stack_sorted(t_stack *stack);
 #endif
