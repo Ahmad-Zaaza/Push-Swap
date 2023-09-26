@@ -43,7 +43,6 @@ void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue) {
   size = get_queue_size(queue);
   init_stack(a, size);
   init_stack(b, 0);
-  printf("queue size (init and populate stack), %d\n", size);
   i = 0;
   while (i < size) {
     value = dequeue(queue);

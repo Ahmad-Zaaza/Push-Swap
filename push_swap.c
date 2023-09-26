@@ -45,7 +45,5 @@ int main(int argc, char **argv) {
     // diagnose(&a, &b);
   }
 
-  ft_putstr_fd("OK\n", 1);
-
-  return 0;
+  return (0);
 }

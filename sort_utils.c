@@ -10,7 +10,6 @@ int is_queue_sorted(t_args_queue *queue) {
     }
     tmp = tmp->next;
   }
-  ft_putstr_fd("Already sorted!\n", 1);
   cleanup_queue(queue);
   return (1);
 }
@@ -75,5 +74,5 @@ int is_rotate(t_stack *stack) {
     index++;
     node = node->next;
   }
-  return min_index < stack->size / 2 ? 1 : 0;
+  return ( min_index <= stack->size / 2 ? 1 : 0 );
 }

@@ -65,9 +65,10 @@ void validate_args(int argc, char **argv, t_args_queue *args_queue) {
     size = get_num_args(args);
     check_args(size, args, args_queue);
   } else {
-    args = ft_split(*(argv + 1), ' ');
+    // args = ft_split(*(argv + 1), ' ');
+    args = argv + 1;
     size = get_num_args(args);
     check_args(size, args, args_queue);
   }
-  cleanup_splitted(args, size);
+  // cleanup_splitted(args, size);
 }
