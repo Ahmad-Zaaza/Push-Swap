@@ -41,6 +41,7 @@ int get_min(t_stack *stack) {
   }
   return (min);
 }
+
 int get_max(t_stack *stack) {
   int max;
 
@@ -54,4 +55,25 @@ int get_max(t_stack *stack) {
     node = node->next;
   }
   return (max);
+}
+
+int is_rotate(t_stack *stack) {
+  int min;
+  int index;
+  int min_index;
+
+  t_stack_node *node;
+  node = stack->top;
+  min = node->data;
+  index = 0;
+  min_index = 0;
+  while (node) {
+    if (node->data < min) {
+      min_index = index;
+      min = node->data;
+    }
+    index++;
+    node = node->next;
+  }
+  return min_index < stack->size / 2 ? 1 : 0;
 }

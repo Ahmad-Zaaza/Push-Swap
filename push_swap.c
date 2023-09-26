@@ -36,6 +36,8 @@ int main(int argc, char **argv) {
     init_and_populate_stack(&a, &b, &args_queue);
     if (a.size <= 3) {
       sort_three(&a, 'a');
+    } else {
+      sort(&a, &b);
     }
     print_stack(&a);
     clean_stack(&a);
