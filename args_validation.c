@@ -37,7 +37,8 @@ static int validate_and_populate_str(char *str, t_args_queue *queue) {
   return (1);
 }
 
-static void check_args(int size, char **str, t_args_queue *args_queue) {
+static void check_args(int size, char **str, t_args_queue *args_queue,
+                       int cleanup) {
   int i;
 
   i = size - 1;
@@ -46,7 +47,8 @@ static void check_args(int size, char **str, t_args_queue *args_queue) {
         !validate_and_populate_str(str[i], args_queue) ||
         !check_duplicates(args_queue)) {
       cleanup_queue(args_queue);
-      cleanup_splitted(str, size);
+      if (cleanup)
+        cleanup_splitted(str, size);
       exit(1);
     }
     i--;
@@ -54,21 +56,19 @@ static void check_args(int size, char **str, t_args_queue *args_queue) {
 }
 
 void validate_args(int argc, char **argv, t_args_queue *args_queue) {
-  char **args;
+
   int size;
   if (argc == 1 || (argc == 2 && !argv[1][0]))
     exit(0);
 
   init_queue(args_queue);
   if (argc == 2) {
-    args = ft_split(argv[1], ' ');
-    size = get_num_args(args);
-    check_args(size, args, args_queue);
+    argv = ft_split(argv[1], ' ');
+    size = get_num_args(argv);
+    check_args(size, argv, args_queue, 1);
+    cleanup_splitted(argv, size);
   } else {
-    // args = ft_split(*(argv + 1), ' ');
-    args = argv + 1;
-    size = get_num_args(args);
-    check_args(size, args, args_queue);
+    size = get_num_args(argv + 1);
+    check_args(size, argv + 1, args_queue, 0);
   }
-  // cleanup_splitted(args, size);
 }

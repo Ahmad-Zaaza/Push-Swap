@@ -35,6 +35,7 @@ void r_rotate(t_stack *stack, char name, int print) {
   new_bottom = stack->bottom->prev;
   new_top->prev = NULL;
   new_top->next = stack->top;
+  stack->top->prev = new_top;
   new_bottom->next = NULL;
   stack->top = new_top;
   stack->bottom = new_bottom;

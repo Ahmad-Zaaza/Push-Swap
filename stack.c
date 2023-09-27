@@ -58,9 +58,10 @@ void print_stack(t_stack *stack) {
   tmp = stack->top;
   while (tmp) {
     ft_putnbr_fd(tmp->data, 1);
-    ft_putchar_fd('\n', 1);
+    ft_putchar_fd(' ', 1);
     tmp = tmp->next;
   }
+  ft_putchar_fd('\n', 1);
 }
 
 void clean_stack(t_stack *stack) {
