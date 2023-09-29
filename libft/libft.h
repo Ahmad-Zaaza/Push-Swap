@@ -39,7 +39,7 @@ int					ft_toupper(int c);
 
 int					ft_tolower(int c);
 
-int					ft_atoi(const char *str);
+long int					ft_atoi(const char *str);
 
 void				*ft_memset(void *b, int c, size_t len);
 

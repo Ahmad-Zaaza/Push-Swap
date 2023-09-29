@@ -32,8 +32,16 @@ typedef struct s_args_queue {
   t_arg_node *tail;
 } t_args_queue;
 
+typedef struct s_frame {
+
+  t_stack a;
+  t_stack b;
+  t_args_queue args_queue;
+  int size;
+} t_frame;
+
 // validation
-void validate_args(int argc, char **argv, t_args_queue *args_queue);
+void validate_args(int argc, char **argv, t_frame *frame);
 int get_num_args(char **str);
 int is_str_digit(char *str);
 void cleanup_splitted(char **str, int size);
@@ -69,4 +77,9 @@ int get_min(t_stack *stack);
 int is_stack_sorted(t_stack *stack);
 void sort(t_stack *a, t_stack *b);
 int is_rotate(t_stack *stack);
+
+// Frame
+
+void create_frame(t_frame *frame);
+
 #endif

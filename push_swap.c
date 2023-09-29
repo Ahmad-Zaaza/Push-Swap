@@ -27,20 +27,19 @@
 // }
 
 int main(int argc, char **argv) {
-  t_stack a;
-  t_stack b;
-  t_args_queue args_queue;
+  t_frame frame;
 
-  validate_args(argc, argv, &args_queue);
-  if (!is_queue_sorted(&args_queue)) {
-    init_and_populate_stack(&a, &b, &args_queue);
-    if (a.size <= 3) {
-      sort_three(&a, 'a');
+  create_frame(&frame);
+  validate_args(argc, argv, &frame);
+  if (!is_queue_sorted(&frame.args_queue)) {
+    init_and_populate_stack(&frame.a, &frame.b, &frame.args_queue);
+    if (frame.a.size <= 3) {
+      sort_three(&frame.a, 'a');
     } else {
-      sort(&a, &b);
+      sort(&frame.a, &frame.b);
     }
-    // print_stack(&a);
-    clean_stack(&a);
+    print_stack(&frame.a);
+    clean_stack(&frame.a);
 
     // diagnose(&a, &b);
   }

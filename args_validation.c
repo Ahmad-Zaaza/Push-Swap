@@ -55,20 +55,18 @@ static void check_args(int size, char **str, t_args_queue *args_queue,
   }
 }
 
-void validate_args(int argc, char **argv, t_args_queue *args_queue) {
+void validate_args(int argc, char **argv, t_frame *frame) {
 
-  int size;
   if (argc == 1 || (argc == 2 && !argv[1][0]))
     exit(0);
 
-  init_queue(args_queue);
   if (argc == 2) {
     argv = ft_split(argv[1], ' ');
-    size = get_num_args(argv);
-    check_args(size, argv, args_queue, 1);
-    cleanup_splitted(argv, size);
+    frame->size = get_num_args(argv);
+    check_args(frame->size, argv, &frame->args_queue, 1);
+    cleanup_splitted(argv, frame->size);
   } else {
-    size = get_num_args(argv + 1);
-    check_args(size, argv + 1, args_queue, 0);
+    frame->size = get_num_args(argv + 1);
+    check_args(frame->size, argv + 1, &frame->args_queue, 0);
   }
 }
