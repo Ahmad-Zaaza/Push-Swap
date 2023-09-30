@@ -32,11 +32,13 @@ int main(int argc, char **argv) {
   create_frame(&frame);
   validate_args(argc, argv, &frame);
   if (!is_queue_sorted(&frame.args_queue)) {
-    init_and_populate_stack(&frame.a, &frame.b, &frame.args_queue);
-    if (frame.a.size <= 3) {
+    populate_stack(&frame);
+
+    if (frame.size <= 3) {
       sort_three(&frame.a, 'a');
     } else {
-      sort(&frame.a, &frame.b);
+      printf("%d yo\n", frame.size);
+      sort(&frame);
     }
     print_stack(&frame.a);
     clean_stack(&frame.a);

@@ -16,8 +16,6 @@ typedef struct s_stack_node {
 } t_stack_node;
 
 typedef struct s_stack {
-  int size;
-  int is_empty;
   t_stack_node *top;
   t_stack_node *bottom;
 } t_stack;
@@ -55,10 +53,11 @@ int get_queue_size(t_args_queue *queue);
 int is_queue_sorted(t_args_queue *queue);
 
 // stack
-void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue);
+void populate_stack(t_frame *frame);
 void print_stack(t_stack *stack);
 void clean_stack(t_stack *stack);
 void push_stack_node(t_stack *stack, t_stack_node *new_node);
+int get_stack_size(t_stack *stack);
 
 // operations
 void print_operation(char *operation, char stack);
@@ -75,11 +74,13 @@ void sort_three(t_stack *stack, char stack_name);
 int get_max(t_stack *stack);
 int get_min(t_stack *stack);
 int is_stack_sorted(t_stack *stack);
-void sort(t_stack *a, t_stack *b);
+void sort(t_frame *frame);
 int is_rotate(t_stack *stack);
 
 // Frame
 
 void create_frame(t_frame *frame);
+
+void print_error(char *message);
 
 #endif

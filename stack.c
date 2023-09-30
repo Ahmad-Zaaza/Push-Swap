@@ -1,11 +1,5 @@
 #include "push_swap.h"
-
-static void init_stack(t_stack *stack, int size) {
-  stack->size = size;
-  stack->is_empty = size == 0;
-  stack->top = NULL;
-  stack->bottom = NULL;
-}
+#include <stdio.h>
 
 static t_stack_node *create_stack_node(int value) {
   t_stack_node *new;
@@ -34,20 +28,17 @@ void push_stack_node(t_stack *stack, t_stack_node *new_node) {
   }
 }
 
-void init_and_populate_stack(t_stack *a, t_stack *b, t_args_queue *queue) {
-  int size;
+void populate_stack(t_frame *frame) {
+
   int i;
   int value;
   t_stack_node *new;
 
-  size = get_queue_size(queue);
-  init_stack(a, size);
-  init_stack(b, 0);
   i = 0;
-  while (i < size) {
-    value = dequeue(queue);
+  while (i < frame->size) {
+    value = dequeue(&frame->args_queue);
     new = create_stack_node(value);
-    push_stack_node(a, new);
+    push_stack_node(&frame->a, new);
     i++;
   }
 }

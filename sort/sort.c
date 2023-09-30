@@ -11,41 +11,46 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
-static void sort_until_three_or_sorted(t_stack *a, t_stack *b) {
+static void sort_until_three_or_sorted(t_frame *frame) {
   int min;
+  int size;
 
-  while (a->size > 3 && !is_stack_sorted(a)) {
-    min = get_min(a);
-    if (is_rotate(a)) {
-      while (a->top->data != min) {
-        rotate(a, 'a', 1);
+  size = get_stack_size(&frame->a);
+
+  while (size > 3 && !is_stack_sorted(&frame->a)) {
+    print_stack(&frame->a);
+    printf("size %d \n", size);
+    min = get_min(&frame->a);
+    if (is_rotate(&frame->a)) {
+      while (frame->a.top->data != min) {
+        rotate(&frame->a, 'a', 1);
       }
-      push(a, b, 'b');
-      b->size++;
+      push(&frame->a, &frame->b, 'b');
+
     } else {
-      while (a->top->data != min) {
-        r_rotate(a, 'a', 1);
+      while (frame->a.top->data != min) {
+        r_rotate(&frame->a, 'a', 1);
       }
-      push(a, b, 'b');
-      b->size++;
+      push(&frame->a, &frame->b, 'b');
     }
-    a->size--;
+    size--;
   }
 }
 
-static void re_populate_a(t_stack *a, t_stack *b) {
-  while (b->size > 0) {
-    push(b, a, 'a');
-    b->size--;
+static void re_populate_a(t_frame *frame) {
+
+  while (frame->b.top) {
+    push(&frame->b, &frame->a, 'a');
   }
 }
 
-void sort(t_stack *a, t_stack *b) {
-  sort_until_three_or_sorted(a, b);
-  if (is_stack_sorted(a))
-    re_populate_a(a, b);
+void sort(t_frame *frame) {
+  sort_until_three_or_sorted(frame);
+  if (is_stack_sorted(&frame->a))
+    re_populate_a(frame);
   else
-    sort_three(a, 'a');
-  re_populate_a(a, b);
+    sort_three(&frame->a, 'a');
+  re_populate_a(frame);
 }

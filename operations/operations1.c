@@ -45,7 +45,7 @@ void push(t_stack *from, t_stack *to, char name) {
     from->top = NULL;
     from->bottom = NULL;
   } else {
-    from->top = from->top->next;
+    from->top = from->top->next ;
     from->top->prev = NULL;
   }
   push_stack_node(to, to_move);

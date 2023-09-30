@@ -22,15 +22,13 @@ int is_str_digit(char *str) {
     i++;
 
   while (str[i]) {
-    if (!ft_isdigit(str[i])) {
-      ft_putstr_fd("Error\n", 2);
-      ft_putstr_fd("Invalid argument, found non integer character.\n", 2);
+    if (!ft_isdigit(str[i]))
       return 0;
-    }
     i++;
   }
   return 1;
 }
+
 void cleanup_splitted(char **str, int size) {
   while (size > 0) {
     free(str[size - 1]);

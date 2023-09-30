@@ -4,6 +4,7 @@ void rotate(t_stack *stack, char name, int print) {
   t_stack_node *new_top;
   t_stack_node *new_bottom;
 
+
   if (!stack->top || !stack->top->next)
     return;
   new_top = stack->top->next;

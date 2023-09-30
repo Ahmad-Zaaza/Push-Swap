@@ -55,17 +55,31 @@ int get_max(t_stack *stack) {
   }
   return (max);
 }
+ int get_stack_size(t_stack *stack) {
+  int size;
+  t_stack_node *node;
+
+  node = stack->top;
+  size = 0;
+  while (node) {
+    size++;
+    node = node->next;
+  }
+  return (size);
+}
 
 int is_rotate(t_stack *stack) {
   int min;
   int index;
   int min_index;
+  int size;
 
   t_stack_node *node;
   node = stack->top;
   min = node->data;
   index = 0;
   min_index = 0;
+  size = get_stack_size(stack);
   while (node) {
     if (node->data < min) {
       min_index = index;
@@ -74,5 +88,5 @@ int is_rotate(t_stack *stack) {
     index++;
     node = node->next;
   }
-  return ( min_index <= stack->size / 2 ? 1 : 0 );
+  return (min_index <= size / 2 ? 1 : 0);
 }

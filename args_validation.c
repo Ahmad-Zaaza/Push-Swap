@@ -2,11 +2,11 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-static int check_duplicates(t_args_queue *queue) {
+static int check_duplicates(t_frame *frame) {
   t_arg_node *tmp;
   t_arg_node *tmp2;
 
-  tmp = queue->head;
+  tmp = frame->args_queue.head;
 
   while (tmp) {
     tmp2 = tmp->next;
@@ -24,34 +24,40 @@ static int check_duplicates(t_args_queue *queue) {
 }
 
 // checks against maximum and minimum integer values and enqueues the value
-static int validate_and_populate_str(char *str, t_args_queue *queue) {
-  int value;
+static int validate_and_populate_str(char *str, t_frame *frame) {
+  long int value;
 
-  value = ft_atoi(str);
-  if (value > INT_MAX || value <= INT_MIN) {
-    ft_putstr_fd("Error\n", 2);
-    ft_putstr_fd("Invalid argument, integer overflow.\n", 2);
+  if (!is_str_digit(str)) {
+    print_error("Invalid argument, found non integer character");
     return (0);
   }
-  enqueue(queue, value);
+  value = ft_atoi(str);
+  if (value > INT_MAX || value < INT_MIN) {
+    print_error("Invalid argument, integer overflow");
+    return (0);
+  }
+  enqueue(&frame->args_queue, value);
   return (1);
 }
 
-static void check_args(int size, char **str, t_args_queue *args_queue,
-                       int cleanup) {
+static void check_args(int size, char **str, t_frame *frame, int cleanup) {
   int i;
+  int success;
 
   i = size - 1;
+  success = 1;
   while (i >= 0) {
-    if (!is_str_digit(str[i]) ||
-        !validate_and_populate_str(str[i], args_queue) ||
-        !check_duplicates(args_queue)) {
-      cleanup_queue(args_queue);
-      if (cleanup)
-        cleanup_splitted(str, size);
-      exit(1);
-    }
+    success = validate_and_populate_str(str[i], frame);
+    success = check_duplicates(frame);
+    if (!success)
+      break;
     i--;
+  }
+  if (cleanup)
+    cleanup_splitted(str, size);
+  if (!success) {
+    cleanup_queue(&frame->args_queue);
+    exit(1);
   }
 }
 
@@ -63,10 +69,9 @@ void validate_args(int argc, char **argv, t_frame *frame) {
   if (argc == 2) {
     argv = ft_split(argv[1], ' ');
     frame->size = get_num_args(argv);
-    check_args(frame->size, argv, &frame->args_queue, 1);
-    cleanup_splitted(argv, frame->size);
+    check_args(frame->size, argv, frame, 1);
   } else {
     frame->size = get_num_args(argv + 1);
-    check_args(frame->size, argv + 1, &frame->args_queue, 0);
+    check_args(frame->size, argv + 1, frame, 0);
   }
 }
