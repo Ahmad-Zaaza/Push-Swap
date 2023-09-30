@@ -15,13 +15,13 @@ static t_stack *create_stack_node(int value) {
   return (new);
 }
 
-void push_stack_node(t_stack *stack, t_stack *new_node) {
+void push_stack_node(t_stack **stack, t_stack *new_node) {
   t_stack **top;
 
-  top = &stack;
-
+  top = stack;
   if (!*top) {
     *top = new_node;
+
     (*top)->next = *top;
     (*top)->prev = *top;
 
@@ -29,8 +29,8 @@ void push_stack_node(t_stack *stack, t_stack *new_node) {
     new_node->next = *top;
     new_node->prev = (*top)->prev;
     (*top)->prev = new_node;
-    (*top)->prev->next = new_node;
-    *top = new_node;
+    new_node->prev->next = new_node;
+    *top = (*top)->prev;
   }
 }
 
@@ -67,16 +67,16 @@ void print_stack(t_stack *stack) {
   }
 }
 
-void clean_stack(t_stack *stack) {
-  t_stack **top;
+void clean_stack(t_stack **stack) {
+  long int last;
   t_stack *tmp;
 
-  top = &stack;
-  tmp = *top;
+  tmp = *stack;
+  last = (*stack)->prev->data;
   while (tmp) {
     tmp = tmp->next;
     free(tmp->prev);
-    if (tmp == *top) {
+    if (tmp->data == last) {
       break;
     }
   }

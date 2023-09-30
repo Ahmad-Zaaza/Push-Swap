@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
       printf("%d yo\n", frame.size);
       sort(&frame);
     }
-    print_stack(&frame.a);
+    print_stack(frame.a);
     clean_stack(&frame.a);
 
     // diagnose(&a, &b);

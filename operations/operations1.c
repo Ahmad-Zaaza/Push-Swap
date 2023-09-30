@@ -7,44 +7,36 @@ void print_operation(char *operation, char stack) {
   ft_putchar_fd('\n', 1);
 }
 
-void swap(t_stack *stack, char name, int print) {
+void swap(t_stack **stack, char name, int print) {
 
   t_stack **top;
-  t_stack *new_top;
-
-  top = &stack;
+  long int tmp;
+  top = stack;
 
   if (!*top || *top == (*top)->next)
     return;
 
-  new_top = (*top)->next;
-  new_top->next = *top;
-  new_top->prev = (*top)->prev;
-  new_top->prev->next = new_top;
-
-  (*top)->next = (*top)->next->next;
-  (*top)->next->next->prev = *top;
-  (*top)->prev = (*top)->next;
-
-  *top = new_top;
+  tmp = (*top)->data;
+  (*top)->data = (*top)->next->data;
+  (*top)->next->data = tmp;
 
   if (print) {
     print_operation("s", name);
   }
 }
 
-void ss(t_stack *a, t_stack *b) {
-  swap(a, 'a', 0);
-  swap(b, 'b', 0);
+void ss(t_frame *frame) {
+  swap(&frame->a, 'a', 0);
+  swap(&frame->b, 'b', 0);
   print_operation("s", 's');
 }
 
-void push(t_stack *from, t_stack *to, char name) {
+void push(t_stack **from, t_stack **to, char name) {
 
   t_stack **from_top;
   t_stack *to_move;
 
-  from_top = &from;
+  from_top = from;
   to_move = *from_top;
   if (!to_move)
     return;

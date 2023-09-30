@@ -24,7 +24,7 @@ int is_stack_sorted(t_stack *stack) {
   while (tmp) {
     if (tmp->data > tmp->next->data)
       return (0);
-    if ((tmp->next = *top))
+    if (tmp->next == *top)
       break;
     tmp = tmp->next;
   }
@@ -44,7 +44,7 @@ int get_min(t_stack *stack) {
     if (tmp->data < min) {
       min = tmp->data;
     }
-    if ((tmp->next = *top))
+    if (tmp->next == *top)
       break;
     tmp = tmp->next;
   }
@@ -64,7 +64,7 @@ int get_max(t_stack *stack) {
     if (tmp->data > max) {
       max = tmp->data;
     }
-    if ((tmp->next = *top))
+    if (tmp->next == *top)
       break;
     tmp = tmp->next;
   }
@@ -82,7 +82,7 @@ int get_stack_size(t_stack *stack) {
   size = 0;
   while (tmp) {
     size++;
-    if ((tmp->next = *top))
+    if (tmp->next == *top)
       break;
     tmp = tmp->next;
   }
@@ -90,24 +90,26 @@ int get_stack_size(t_stack *stack) {
 }
 
 int is_rotate(t_stack *stack) {
+  t_stack **top;
+  t_stack *tmp;
   int min;
   int index;
   int min_index;
-  int size;
 
-  t_stack_node *node;
-  node = stack->top;
-  min = node->data;
+  top = &stack;
+  tmp = *top;
+  min = tmp->data;
   index = 0;
   min_index = 0;
-  size = get_stack_size(stack);
-  while (node) {
-    if (node->data < min) {
+  while (tmp) {
+    if (tmp->data < min) {
       min_index = index;
-      min = node->data;
+      min = tmp->data;
     }
+    if (tmp->next == *top)
+      break;
     index++;
-    node = node->next;
+    tmp = tmp->next;
   }
-  return ((min_index + 1) <= size / 2 ? 1 : 0);
+  return ((min_index + 1) <= get_stack_size(stack) / 2 ? 1 : 0);
 }
