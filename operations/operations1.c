@@ -8,23 +8,26 @@ void print_operation(char *operation, char stack) {
 }
 
 void swap(t_stack *stack, char name, int print) {
-  t_stack_node *second_node;
-  t_stack_node *first_node;
 
-  if (!stack->top || !stack->top->next)
+  t_stack **top;
+  t_stack *new_top;
+
+  top = &stack;
+
+  if (!*top || *top == (*top)->next)
     return;
 
-  first_node = stack->top;
-  second_node = stack->top->next;
+  new_top = (*top)->next;
+  new_top->next = *top;
+  new_top->prev = (*top)->prev;
+  new_top->prev->next = new_top;
 
-  first_node->next = first_node->next->next;
-  first_node->prev = first_node->next->prev;
+  (*top)->next = (*top)->next->next;
+  (*top)->next->next->prev = *top;
+  (*top)->prev = (*top)->next;
 
-  second_node->prev = NULL;
-  second_node->next = first_node;
+  *top = new_top;
 
-  stack->top = second_node;
-  stack->top->next = first_node;
   if (print) {
     print_operation("s", name);
   }
@@ -37,16 +40,22 @@ void ss(t_stack *a, t_stack *b) {
 }
 
 void push(t_stack *from, t_stack *to, char name) {
-  t_stack_node *to_move;
-  if (!from->top)
+
+  t_stack **from_top;
+  t_stack *to_move;
+
+  from_top = &from;
+  to_move = *from_top;
+  if (!to_move)
     return;
-  to_move = from->top;
-  if (!from->top->next) {
-    from->top = NULL;
-    from->bottom = NULL;
+
+  if (to_move == to_move->next) {
+    from = NULL;
+
   } else {
-    from->top = from->top->next ;
-    from->top->prev = NULL;
+    (*from_top)->next->prev = (*from_top)->prev;
+    (*from_top)->prev->next = (*from_top)->next;
+    (*from_top) = (*from_top)->next;
   }
   push_stack_node(to, to_move);
   print_operation("p", name);

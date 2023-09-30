@@ -15,12 +15,17 @@ int is_queue_sorted(t_args_queue *queue) {
 }
 
 int is_stack_sorted(t_stack *stack) {
-  t_stack_node *tmp;
-  tmp = stack->top;
-  while (tmp->next) {
-    if (tmp->data > tmp->next->data) {
+
+  t_stack **top;
+  t_stack *tmp;
+
+  top = &stack;
+  tmp = *top;
+  while (tmp) {
+    if (tmp->data > tmp->next->data)
       return (0);
-    }
+    if ((tmp->next = *top))
+      break;
     tmp = tmp->next;
   }
   return (1);
@@ -29,14 +34,19 @@ int is_stack_sorted(t_stack *stack) {
 int get_min(t_stack *stack) {
   int min;
 
-  t_stack_node *node;
-  node = stack->top;
-  min = node->data;
-  while (node) {
-    if (node->data < min) {
-      min = node->data;
+  t_stack **top;
+  t_stack *tmp;
+
+  top = &stack;
+  tmp = *top;
+  min = tmp->data;
+  while (tmp) {
+    if (tmp->data < min) {
+      min = tmp->data;
     }
-    node = node->next;
+    if ((tmp->next = *top))
+      break;
+    tmp = tmp->next;
   }
   return (min);
 }
@@ -44,26 +54,37 @@ int get_min(t_stack *stack) {
 int get_max(t_stack *stack) {
   int max;
 
-  t_stack_node *node;
-  node = stack->top;
-  max = node->data;
-  while (node) {
-    if (node->data > max) {
-      max = node->data;
+  t_stack **top;
+  t_stack *tmp;
+
+  top = &stack;
+  tmp = *top;
+  max = tmp->data;
+  while (tmp) {
+    if (tmp->data > max) {
+      max = tmp->data;
     }
-    node = node->next;
+    if ((tmp->next = *top))
+      break;
+    tmp = tmp->next;
   }
   return (max);
 }
- int get_stack_size(t_stack *stack) {
-  int size;
-  t_stack_node *node;
 
-  node = stack->top;
+int get_stack_size(t_stack *stack) {
+  int size;
+
+  t_stack **top;
+  t_stack *tmp;
+
+  top = &stack;
+  tmp = *top;
   size = 0;
-  while (node) {
+  while (tmp) {
     size++;
-    node = node->next;
+    if ((tmp->next = *top))
+      break;
+    tmp = tmp->next;
   }
   return (size);
 }
@@ -88,5 +109,5 @@ int is_rotate(t_stack *stack) {
     index++;
     node = node->next;
   }
-  return (min_index <= size / 2 ? 1 : 0);
+  return ((min_index + 1) <= size / 2 ? 1 : 0);
 }

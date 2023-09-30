@@ -1,9 +1,9 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-static t_stack_node *create_stack_node(int value) {
-  t_stack_node *new;
-  new = (t_stack_node *)malloc(sizeof(t_stack_node));
+static t_stack *create_stack_node(int value) {
+  t_stack *new;
+  new = (t_stack *)malloc(sizeof(t_stack));
 
   if (!new) {
     ft_putstr_fd("Error mallocing\n", 2);
@@ -15,16 +15,22 @@ static t_stack_node *create_stack_node(int value) {
   return (new);
 }
 
-void push_stack_node(t_stack *stack, t_stack_node *new_node) {
-  new_node->next = NULL;
-  new_node->prev = NULL;
-  if (!stack->top) {
-    stack->top = new_node;
-    stack->bottom = new_node;
+void push_stack_node(t_stack *stack, t_stack *new_node) {
+  t_stack **top;
+
+  top = &stack;
+
+  if (!*top) {
+    *top = new_node;
+    (*top)->next = *top;
+    (*top)->prev = *top;
+
   } else {
-    stack->top->prev = new_node;
-    new_node->next = stack->top;
-    stack->top = new_node;
+    new_node->next = *top;
+    new_node->prev = (*top)->prev;
+    (*top)->prev = new_node;
+    (*top)->prev->next = new_node;
+    *top = new_node;
   }
 }
 
@@ -32,35 +38,46 @@ void populate_stack(t_frame *frame) {
 
   int i;
   int value;
-  t_stack_node *new;
+  t_stack *new_node;
 
   i = 0;
   while (i < frame->size) {
     value = dequeue(&frame->args_queue);
-    new = create_stack_node(value);
-    push_stack_node(&frame->a, new);
+    // TODO: protect
+    new_node = create_stack_node(value);
+    push_stack_node(&frame->a, new_node);
     i++;
   }
 }
 
 void print_stack(t_stack *stack) {
-  t_stack_node *tmp;
+  t_stack **top;
+  t_stack *tmp;
 
-  tmp = stack->top;
+  top = &stack;
+  tmp = *top;
   while (tmp) {
     ft_putnbr_fd(tmp->data, 1);
     ft_putchar_fd(' ', 1);
+    ft_putchar_fd('\n', 1);
     tmp = tmp->next;
+    if (tmp == *top) {
+      break;
+    }
   }
-  ft_putchar_fd('\n', 1);
 }
 
 void clean_stack(t_stack *stack) {
-  t_stack_node *tmp;
+  t_stack **top;
+  t_stack *tmp;
 
-  while (stack->top) {
-    tmp = stack->top;
-    stack->top = stack->top->next;
-    free(tmp);
+  top = &stack;
+  tmp = *top;
+  while (tmp) {
+    tmp = tmp->next;
+    free(tmp->prev);
+    if (tmp == *top) {
+      break;
+    }
   }
 }

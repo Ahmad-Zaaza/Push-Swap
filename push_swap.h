@@ -9,15 +9,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct s_stack_node {
-  int data;
-  struct s_stack_node *prev;
-  struct s_stack_node *next;
-} t_stack_node;
-
 typedef struct s_stack {
-  t_stack_node *top;
-  t_stack_node *bottom;
+  int data;
+  struct s_stack *prev;
+  struct s_stack *next;
 } t_stack;
 
 typedef struct s_arg_node {
@@ -56,7 +51,7 @@ int is_queue_sorted(t_args_queue *queue);
 void populate_stack(t_frame *frame);
 void print_stack(t_stack *stack);
 void clean_stack(t_stack *stack);
-void push_stack_node(t_stack *stack, t_stack_node *new_node);
+void push_stack_node(t_stack *stack, t_stack *new_node);
 int get_stack_size(t_stack *stack);
 
 // operations
