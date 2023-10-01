@@ -78,6 +78,12 @@ void	validate_args(int argc, char **argv, t_frame *frame)
 {
 	if (argc < 2)
 		exit(0);
+	if (argv[1][0] == '-' && argv[1][1] == 'v')
+	{
+		frame->print_stacks = 1;
+		argv++;
+		argc--;
+	}
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
