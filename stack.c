@@ -15,7 +15,7 @@ static t_stack *create_stack_node(int value) {
   return (new);
 }
 
-void push_stack_node(t_stack **stack, t_stack *new_node) {
+void push_stack_node(t_stack *stack, t_stack *new_node) {
   t_stack **top;
 
   top = stack;

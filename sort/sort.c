@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/01 18:43:52 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/01 19:23:23 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static void	sort_until_three_or_sorted(t_frame *frame)
 				rotate(&frame->a, 'a', 1);
 			}
 			if (!is_stack_sorted(frame->a))
-				push(&frame->a, &frame->b, 'b');
+				pb(frame);
 		}
 		else
 		{
 			while (frame->a->data != min)
 				r_rotate(&frame->a, 'a', 1);
 			if (!is_stack_sorted(frame->a))
-				push(&frame->a, &frame->b, 'b');
+				pb(frame);
 		}
 		size--;
 	}
@@ -51,7 +51,7 @@ static void	re_populate_a(t_frame *frame)
 	top = frame->b->prev->data;
 	while (frame->b)
 	{
-		push(&frame->b, &frame->a, 'a');
+		pa(frame);
 		if (frame->b->data == top)
 			break ;
 	}

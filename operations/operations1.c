@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/01 19:20:12 by azaaza            #+#    #+#             */
+/*   Updated: 2023/10/01 19:32:48 by azaaza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 #include <stdio.h>
 
@@ -35,26 +47,44 @@ void	ss(t_frame *frame)
 	print_operation("s", 's');
 }
 
-void	push(t_stack **from, t_stack **to, char name)
+void	pa(t_frame *frame)
 {
-	t_stack **from_top;
-	t_stack *to_move;
+	t_stack	*from;
+	t_stack	*to_move;
 
-	from_top = from;
-	to_move = *from_top;
+	from = frame->b;
+	to_move = from;
 	if (!to_move)
 		return ;
-
 	if (to_move == to_move->next)
-	{
 		from = NULL;
-	}
 	else
 	{
-		(*from_top)->next->prev = (*from_top)->prev;
-		(*from_top)->prev->next = (*from_top)->next;
-		(*from_top) = (*from_top)->next;
+		(from)->next->prev = (from)->prev;
+		(from)->prev->next = (from)->next;
+		(from) = (from)->next;
 	}
-	push_stack_node(to, to_move);
-	print_operation("p", name);
+	push_stack_node(frame->a, to_move);
+	print_operation("p", 'a');
+}
+
+void	pb(t_frame *frame)
+{
+	t_stack	*from;
+	t_stack	*to_move;
+
+	from = frame->a;
+	to_move = from;
+	if (!to_move)
+		return ;
+	if (from == from->next)
+		from = NULL;
+	else
+	{
+		(from)->next->prev = (from)->prev;
+		(from)->prev->next = (from)->next;
+		(from) = (from)->next;
+	}
+	push_stack_node(frame->b, to_move);
+	print_operation("p", 'b');
 }
