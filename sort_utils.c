@@ -22,7 +22,7 @@ int is_stack_sorted(t_stack *stack) {
   top = &stack;
   tmp = *top;
   while (tmp) {
-    if (tmp->data > tmp->next->data)
+    if (tmp->data > tmp->next->data && tmp->next != *top)
       return (0);
     if (tmp->next == *top)
       break;

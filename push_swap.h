@@ -30,6 +30,7 @@ typedef struct s_frame {
   t_stack *a;
   t_stack *b;
   t_args_queue args_queue;
+  int print_stacks;
   int size;
 } t_frame;
 

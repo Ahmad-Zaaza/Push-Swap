@@ -37,10 +37,9 @@ int main(int argc, char **argv) {
     if (frame.size <= 3) {
       sort_three(&frame.a, 'a');
     } else {
-      printf("%d yo\n", frame.size);
       sort(&frame);
     }
-    print_stack(frame.a);
+    // print_stack(frame.a);
     clean_stack(&frame.a);
 
     // diagnose(&a, &b);
