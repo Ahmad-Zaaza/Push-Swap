@@ -6,17 +6,21 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:12 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/03 01:21:30 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/03 01:47:52 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdio.h>
 
-void print_operation(char *operation, char stack) {
-  ft_putstr_fd(operation, 1);
-  ft_putchar_fd(stack, 1);
-  ft_putchar_fd('\n', 1);
+void print_operation(char *operation, char stack, t_frame *frame) {
+  if (frame->print_stacks) {
+    print_stacks(frame);
+  } else {
+    ft_putstr_fd(operation, 1);
+    ft_putchar_fd(stack, 1);
+    ft_putchar_fd('\n', 1);
+  }
 }
 
 void swap(t_frame *frame, char name, int print) {
@@ -33,14 +37,14 @@ void swap(t_frame *frame, char name, int print) {
   (*stack)->data = (*stack)->next->data;
   (*stack)->next->data = tmp;
   if (print) {
-    print_operation("s", name);
+    print_operation("s", name, frame);
   }
 }
 
 void ss(t_frame *frame) {
   swap(frame, 'a', 0);
   swap(frame, 'b', 0);
-  print_operation("s", 's');
+  print_operation("s", 's', frame);
 }
 
 void pa(t_frame *frame) {
@@ -57,13 +61,12 @@ void pa(t_frame *frame) {
     (frame->b) = (frame->b)->next;
   }
   push_stack_node(&frame->a, to_move);
-  print_operation("p", 'a');
+  print_operation("p", 'a', frame);
 }
 
 void pb(t_frame *frame) {
   t_stack *to_move;
 
-  
   to_move = frame->a;
   if (!to_move)
     return;
@@ -75,5 +78,5 @@ void pb(t_frame *frame) {
     (frame->a) = (frame->a)->next;
   }
   push_stack_node(&frame->b, to_move);
-  print_operation("p", 'b');
+  print_operation("p", 'b', frame);
 }

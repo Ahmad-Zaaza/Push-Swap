@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     } else {
       sort(&frame);
     }
-    print_stack(frame.a);
+    // print_stack(frame.a);
     clean_stack(&frame.a);
 
     // diagnose(&a, &b);
