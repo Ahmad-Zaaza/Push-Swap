@@ -55,7 +55,7 @@ int						is_queue_sorted(t_args_queue *queue);
 void					populate_stack(t_frame *frame);
 void					print_stack(t_stack *stack);
 void					clean_stack(t_stack **stack);
-void					push_stack_node(t_stack *stack, t_stack *new_node);
+void					push_stack_node(t_stack **stack, t_stack *new_node);
 int						get_stack_size(t_stack *stack);
 void					print_stacks(t_stack *stack);
 
@@ -65,13 +65,13 @@ void					swap(t_frame *frame, char name, int print);
 void					pa(t_frame *frame);
 void					pb(t_frame *frame);
 void					ss(t_frame *frame);
-void					rotate(t_stack **stack, char name, int print);
+void					rotate(t_frame *frame, char name, int print);
 void					rr(t_frame *frame);
-void					r_rotate(t_stack **stack, char name, int print);
+void					r_rotate(t_frame *frame, char name, int print);
 void					rrr(t_frame *frame);
 
 // sort
-void					sort_three(t_stack **stack, char stack_name);
+void					sort_three(t_frame *frame, char stack_name);
 int						get_max(t_stack *stack);
 int						get_min(t_stack *stack);
 int						is_stack_sorted(t_stack *stack);

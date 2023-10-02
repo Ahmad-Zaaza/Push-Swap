@@ -15,22 +15,20 @@ static t_stack *create_stack_node(int value) {
   return (new);
 }
 
-void push_stack_node(t_stack *stack, t_stack *new_node) {
-  t_stack **top;
+void push_stack_node(t_stack **stack, t_stack *new_node) {
 
-  top = stack;
-  if (!*top) {
-    *top = new_node;
+  if (!*stack) {
+    *stack = new_node;
 
-    (*top)->next = *top;
-    (*top)->prev = *top;
+    (*stack)->next = *stack;
+    (*stack)->prev = *stack;
 
   } else {
-    new_node->next = *top;
-    new_node->prev = (*top)->prev;
-    (*top)->prev = new_node;
+    new_node->next = *stack;
+    new_node->prev = (*stack)->prev;
+    (*stack)->prev = new_node;
     new_node->prev->next = new_node;
-    *top = (*top)->prev;
+    *stack = (*stack)->prev;
   }
 }
 
