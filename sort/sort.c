@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/03 01:23:22 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/03 02:11:18 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void re_populate_a(t_frame *frame) {
 }
 
 void sort(t_frame *frame) {
+  printf("median: %d\n", find_median(frame, 'a'));
   sort_until_three_or_sorted(frame);
   if (is_stack_sorted(frame->a))
     re_populate_a(frame);

@@ -80,4 +80,7 @@ void create_frame(t_frame *frame);
 
 void print_error(char *message);
 
+// median
+int find_median(t_frame *frame, char stack_name);
+
 #endif
