@@ -31,6 +31,7 @@ int is_stack_sorted(t_stack *stack) {
   return (1);
 }
 
+
 int get_min(t_stack *stack) {
   int min;
 
@@ -69,24 +70,6 @@ int get_max(t_stack *stack) {
     tmp = tmp->next;
   }
   return (max);
-}
-
-int get_stack_size(t_stack *stack) {
-  int size;
-
-  t_stack **top;
-  t_stack *tmp;
-
-  top = &stack;
-  tmp = *top;
-  size = 0;
-  while (tmp) {
-    size++;
-    if (tmp->next == *top)
-      break;
-    tmp = tmp->next;
-  }
-  return (size);
 }
 
 int is_rotate(t_stack *stack) {

@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 01:08:38 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/04 01:32:12 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/04 01:55:07 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int get_value_index(t_stack *stack, int value) {
 
   index = 0;
   while (stack->data != value) {
-stack = stack->next;
+    stack = stack->next;
     index++;
   }
   return (index);
@@ -45,4 +45,22 @@ int moves_to_top(t_stack *stack, int value) {
   else
     moves = stack_size - index;
   return (moves);
+}
+
+int get_stack_size(t_stack *stack) {
+  int size;
+
+  t_stack **top;
+  t_stack *tmp;
+
+  top = &stack;
+  tmp = *top;
+  size = 0;
+  while (tmp) {
+    size++;
+    if (tmp->next == *top)
+      break;
+    tmp = tmp->next;
+  }
+  return (size);
 }
