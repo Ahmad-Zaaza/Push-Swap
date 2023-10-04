@@ -31,6 +31,8 @@ typedef struct s_frame {
   t_args_queue args_queue;
   int print_stacks;
   int size;
+  int b_highest;
+  int b_lowest;
   int cheapest_value;
   int cheapest_moves;
 } t_frame;
@@ -77,8 +79,8 @@ void sort(t_frame *frame);
 int is_rotate(t_stack *stack);
 
 // Frame
-
 void create_frame(t_frame *frame);
+
 
 void print_error(char *message);
 
@@ -88,5 +90,10 @@ int find_median(t_frame *frame, char stack_name);
 // stack_utils
 int moves_to_top(t_stack *stack, int value);
 int should_rotate_to_top(t_stack *stack, int value);
+
+// calculations
+
+int calculate_b_moves(t_stack *stack, int value);
+void find_cheapest_move(t_frame *frame);
 
 #endif

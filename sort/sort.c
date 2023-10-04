@@ -36,47 +36,6 @@
 //   }
 // }
 
-static int calculate_b_moves(t_stack *stack, int value) {
-  int highest_value;
-  int highest_index;
-  int index;
-  t_stack *last;
-
-  highest_index = 0;
-  index = 0;
-  last = stack->prev;
-  while (stack != last) {
-    if (stack->data > value) {
-      highest_value = stack->data;
-      highest_index = index;
-    }
-    index++;
-    stack = stack->next;
-  }
-  if (highest_index == 0)
-    return 0;
-  return (moves_to_top(stack, highest_value));
-}
-
-static void find_cheapest_move(t_frame *frame) {
-  t_stack *stack;
-  int moves;
-
-  stack = frame->a;
-  while (stack != frame->a->prev) {
-    moves = 0;
-    // if its highest or lowest. put it in top
-    moves = calculate_b_moves(frame->b, stack->data);
-    moves += moves_to_top(frame->a, stack->data);
-
-    if (!frame->cheapest_moves || moves < frame->cheapest_moves) {
-      frame->cheapest_moves = moves;
-      frame->cheapest_value = stack->data;
-    }
-    stack = stack->next;
-  }
-}
-
 static void move_to_b(t_frame *frame) {
   find_cheapest_move(frame);
   printf("cheapest value: %d\n", frame->cheapest_value);
@@ -90,12 +49,16 @@ static void sort_until_three_or_sorted(t_frame *frame) {
 
   size = get_stack_size(frame->a);
   while (size > 3 && !is_stack_sorted(frame->a)) {
-    // if (frame->a->data > frame->a->next->data) {
-    //   frame->b_highest = frame->a->data;
-    //   frame->b_lowest = frame->a->next->data;
-    // }
     pb(frame);
     pb(frame);
+    if (frame->b->data > frame->b->next->data) {
+      frame->b_highest = frame->b->data;
+      frame->b_lowest = frame->b->next->data;
+    } else {
+      rotate(frame, 'b', 1);
+      frame->b_highest = frame->b->data;
+      frame->b_lowest = frame->b->next->data;
+    }
     move_to_b(frame);
     size--;
   }
