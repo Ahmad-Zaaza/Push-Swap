@@ -35,6 +35,11 @@ typedef struct s_frame {
   int b_lowest;
   int cheapest_value;
   int cheapest_moves;
+  int a_rotations;
+  int a_r_rotations;
+  int b_rotations;
+  int b_r_rotations;
+
 } t_frame;
 
 // validation
@@ -81,7 +86,6 @@ int is_rotate(t_stack *stack);
 // Frame
 void create_frame(t_frame *frame);
 
-
 void print_error(char *message);
 
 // median
@@ -90,10 +94,12 @@ int find_median(t_frame *frame, char stack_name);
 // stack_utils
 int moves_to_top(t_stack *stack, int value);
 int should_rotate_to_top(t_stack *stack, int value);
+void set_new_highest_lowest(t_frame *frame, int value);
 
 // calculations
 
 int calculate_b_moves(t_stack *stack, int value);
 void find_cheapest_move(t_frame *frame);
+void reset_rotations(t_frame *frame);
 
 #endif

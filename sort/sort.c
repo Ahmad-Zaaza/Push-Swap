@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/04 02:42:40 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/05 03:00:26 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,37 @@
 
 static void move_to_b(t_frame *frame) {
   find_cheapest_move(frame);
+  while (frame->a_rotations > 0 && frame->b_rotations > 0) {
+    rr(frame);
+    frame->a_rotations--;
+    frame->b_rotations--;
+  }
+  while (frame->a_r_rotations > 0 && frame->b_r_rotations > 0) {
+    rrr(frame);
+    frame->a_r_rotations--;
+    frame->b_r_rotations--;
+  }
+  while (frame->a_rotations > 0) {
+    rotate(frame, 'a', 1);
+    frame->a_rotations--;
+  }
+  while (frame->b_rotations > 0) {
+    rotate(frame, 'b', 1);
+    frame->b_rotations--;
+  }
+  while (frame->a_r_rotations > 0) {
+    r_rotate(frame, 'a', 1);
+    frame->a_r_rotations--;
+  }
+  while (frame->b_r_rotations > 0) {
+    r_rotate(frame, 'b', 1);
+    frame->b_r_rotations--;
+  }
+  pb(frame);
+  frame->cheapest_moves = 0;
+  reset_rotations(frame);
   printf("cheapest value: %d\n", frame->cheapest_value);
   printf("cheapest moves: %d\n", frame->cheapest_moves);
-  exit(1);
 }
 
 static void sort_until_three_or_sorted(t_frame *frame) {
@@ -48,7 +76,7 @@ static void sort_until_three_or_sorted(t_frame *frame) {
   int size;
 
   size = get_stack_size(frame->a);
-  while (size > 3 && !is_stack_sorted(frame->a)) {
+  if (size > 3) {
     pb(frame);
     pb(frame);
     if (frame->b->data > frame->b->next->data) {
@@ -59,6 +87,9 @@ static void sort_until_three_or_sorted(t_frame *frame) {
       frame->b_highest = frame->b->data;
       frame->b_lowest = frame->b->next->data;
     }
+  }
+  size -= 2;
+  while (size > 3 && !is_stack_sorted(frame->a)) {
     move_to_b(frame);
     size--;
   }
