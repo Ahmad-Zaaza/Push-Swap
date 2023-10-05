@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/05 03:00:26 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/05 09:07:04 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ static void move_to_b(t_frame *frame) {
   pb(frame);
   frame->cheapest_moves = 0;
   reset_rotations(frame);
-  printf("cheapest value: %d\n", frame->cheapest_value);
-  printf("cheapest moves: %d\n", frame->cheapest_moves);
 }
 
 static void sort_until_three_or_sorted(t_frame *frame) {
@@ -96,14 +94,14 @@ static void sort_until_three_or_sorted(t_frame *frame) {
 }
 
 static void re_populate_a(t_frame *frame) {
-  long int top;
+  // long int top;
 
   if (!frame->b)
     return;
-  top = frame->b->prev->data;
+  // top = frame->b->data;
   while (frame->b) {
     pa(frame);
-    if (frame->b && frame->b->data == top)
+    if (!frame->b)
       break;
   }
 }
