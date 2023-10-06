@@ -1,12 +1,14 @@
 #include "push_swap.h"
 
-int find_pivot_b_node(t_stack *stack, int value) {
+int find_pivot_b_node(t_frame *frame, int value) {
   int pivot;
   int diff;
   t_stack *tmp;
 
-  pivot = stack->data;
-  tmp = stack;
+  if (value > frame->b_highest || value < frame->b_lowest)
+    return (frame->b_highest);
+  pivot = frame->b->data;
+  tmp = frame->b;
   diff = 0;
   while (tmp) {
     if (tmp->data < value && tmp->prev->data > value) {
@@ -18,19 +20,19 @@ int find_pivot_b_node(t_stack *stack, int value) {
         pivot = tmp->data;
       }
     }
-    if (tmp->next == stack)
+    if (tmp->next == frame->b)
       break;
     tmp = tmp->next;
   }
-  return pivot;
+  return (pivot);
 }
 
-int calculate_b_moves(t_stack *stack, int value) {
+int calculate_b_moves(t_frame *frame, int value) {
   int b_pivot;
-  b_pivot = find_pivot_b_node(stack, value);
-  if (b_pivot == stack->data)
+  b_pivot = find_pivot_b_node(frame, value);
+  if (b_pivot == frame->b->data)
     return 0;
-  return (moves_to_top(stack, b_pivot));
+  return (moves_to_top(frame->b, b_pivot));
 }
 
 static void set_number_of_rotations(t_frame *frame, int a_moves_to_top,
@@ -38,8 +40,8 @@ static void set_number_of_rotations(t_frame *frame, int a_moves_to_top,
   // b
   reset_rotations(frame);
   if (b_moves_to_top > 0) {
-    if (should_rotate_to_top(
-            frame->b, find_pivot_b_node(frame->b, frame->cheapest_value)))
+    if (should_rotate_to_top(frame->b,
+                             find_pivot_b_node(frame, frame->cheapest_value)))
       frame->b_rotations = b_moves_to_top;
     else
       frame->b_r_rotations = b_moves_to_top;
@@ -57,24 +59,28 @@ void find_cheapest_move(t_frame *frame) {
   int b_moves;
 
   stack = frame->a;
-  while (stack != frame->a->prev) {
+  while (stack) {
     a_moves = 0;
     b_moves = 0;
-    // if its highest or lowest. put it in top
-    if (stack->data > frame->b_highest || stack->data < frame->b_lowest) {
-      // +1 is the push move
-      a_moves = moves_to_top(frame->a, stack->data);
-    } else {
-      b_moves = calculate_b_moves(frame->b, stack->data);
-      a_moves = moves_to_top(frame->a, stack->data);
-    }
+    // if its highest or lowest. put it in top, above the latest highest number
+    // aka we should make sure that the highest number is on top
+    // if (stack->data > frame->b_highest || stack->data < frame->b_lowest) {
+    a_moves = moves_to_top(frame->a, stack->data);
+    b_moves = calculate_b_moves(frame, stack->data);
+    // } else {
+    //   b_moves = calculate_b_moves(frame ,stack->data);
+    //   a_moves = moves_to_top(frame->a, stack->data);
+    // }
     if (!frame->cheapest_moves ||
         (a_moves + b_moves + 1) < frame->cheapest_moves) {
+      // +1 is the push move
       frame->cheapest_moves = a_moves + b_moves + 1;
       frame->cheapest_value = stack->data;
       set_new_highest_lowest(frame, frame->cheapest_value);
       set_number_of_rotations(frame, a_moves, b_moves);
     }
+    if (stack->next == frame->a)
+      break;
     stack = stack->next;
   }
 }

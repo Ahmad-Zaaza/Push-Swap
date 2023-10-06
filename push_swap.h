@@ -98,7 +98,7 @@ void set_new_highest_lowest(t_frame *frame, int value);
 
 // calculations
 
-int calculate_b_moves(t_stack *stack, int value);
+int calculate_b_moves(t_frame *frame, int value);
 void find_cheapest_move(t_frame *frame);
 void reset_rotations(t_frame *frame);
 
