@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 01:08:38 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/05 02:34:34 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/07 01:10:03 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int get_stack_size(t_stack *stack) {
 
 void set_new_highest_lowest(t_frame *frame, int value) {
   if (value > frame->b_highest)
-    frame->b_highest = value;
+    frame->b_new_highest = value;
   if (value < frame->b_lowest)
-    frame->b_lowest = value;
+    frame->b_new_lowest = value;
 }

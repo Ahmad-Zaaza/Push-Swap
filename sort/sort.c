@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/05 09:07:04 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/07 01:14:07 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 
 static void move_to_b(t_frame *frame) {
   find_cheapest_move(frame);
+  frame->b_highest = frame->b_new_highest;
+  frame->b_lowest = frame->b_new_lowest;
   while (frame->a_rotations > 0 && frame->b_rotations > 0) {
     rr(frame);
     frame->a_rotations--;
@@ -79,11 +81,15 @@ static void sort_until_three_or_sorted(t_frame *frame) {
     pb(frame);
     if (frame->b->data > frame->b->next->data) {
       frame->b_highest = frame->b->data;
+      frame->b_new_highest = frame->b->data;
       frame->b_lowest = frame->b->next->data;
+      frame->b_new_lowest = frame->b->next->data;
     } else {
       rotate(frame, 'b', 1);
       frame->b_highest = frame->b->data;
+      frame->b_new_highest = frame->b->data;
       frame->b_lowest = frame->b->next->data;
+      frame->b_new_lowest = frame->b->next->data;
     }
   }
   size -= 2;

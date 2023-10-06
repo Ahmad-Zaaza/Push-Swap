@@ -51,6 +51,7 @@ static void set_number_of_rotations(t_frame *frame, int a_moves_to_top,
     frame->a_rotations = a_moves_to_top;
   else
     frame->a_r_rotations = a_moves_to_top;
+
 }
 
 void find_cheapest_move(t_frame *frame) {
