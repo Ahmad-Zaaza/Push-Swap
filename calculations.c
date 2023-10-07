@@ -35,7 +35,7 @@ int calculate_b_moves(t_frame *frame, int value) {
   return (moves_to_top(frame->b, b_pivot));
 }
 
-static void set_number_of_rotations(t_frame *frame, int a_moves_to_top,
+static void set_rotations(t_frame *frame, int a_moves_to_top,
                                     int b_moves_to_top) {
   // b
   reset_rotations(frame);
@@ -77,7 +77,7 @@ void find_cheapest_move(t_frame *frame) {
       // +1 is the push move
       frame->cheapest_moves = a_moves + b_moves + 1;
       frame->cheapest_value = stack->data;
-      set_number_of_rotations(frame, a_moves, b_moves);
+      set_rotations(frame, a_moves, b_moves);
     }
     if (stack->next == frame->a)
       break;

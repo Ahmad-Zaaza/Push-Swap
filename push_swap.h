@@ -88,9 +88,6 @@ void create_frame(t_frame *frame);
 
 void print_error(char *message);
 
-// median
-int find_median(t_frame *frame, char stack_name);
-
 // stack_utils
 int moves_to_top(t_stack *stack, int value);
 int should_rotate_to_top(t_stack *stack, int value);
