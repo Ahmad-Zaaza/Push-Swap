@@ -37,7 +37,6 @@ int calculate_b_moves(t_frame *frame, int value) {
 
 static void set_rotations(t_frame *frame, int a_moves_to_top,
                                     int b_moves_to_top) {
-  // b
   reset_rotations(frame);
   if (b_moves_to_top > 0) {
     if (should_rotate_to_top(frame->b,
@@ -46,7 +45,6 @@ static void set_rotations(t_frame *frame, int a_moves_to_top,
     else
       frame->b_r_rotations = b_moves_to_top;
   }
-  // a
   if (should_rotate_to_top(frame->a, frame->cheapest_value))
     frame->a_rotations = a_moves_to_top;
   else
@@ -63,18 +61,10 @@ void find_cheapest_move(t_frame *frame) {
   while (stack) {
     a_moves = 0;
     b_moves = 0;
-    // if its highest or lowest. put it in top, above the latest highest number
-    // aka we should make sure that the highest number is on top
-    // if (stack->data > frame->b_highest || stack->data < frame->b_lowest) {
     a_moves = moves_to_top(frame->a, stack->data);
     b_moves = calculate_b_moves(frame, stack->data);
-    // } else {
-    //   b_moves = calculate_b_moves(frame ,stack->data);
-    //   a_moves = moves_to_top(frame->a, stack->data);
-    // }
     if (!frame->cheapest_moves ||
         (a_moves + b_moves + 1) < frame->cheapest_moves) {
-      // +1 is the push move
       frame->cheapest_moves = a_moves + b_moves + 1;
       frame->cheapest_value = stack->data;
       set_rotations(frame, a_moves, b_moves);

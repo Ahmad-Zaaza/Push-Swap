@@ -48,24 +48,6 @@ void populate_stack(t_frame *frame) {
   }
 }
 
-void print_stack(t_stack *stack) {
-  t_stack **top;
-  t_stack *tmp;
-
-  top = &stack;
-  tmp = *top;
-  while (tmp) {
-    ft_putnbr_fd(tmp->data, 1);
-    ft_putchar_fd(' ', 1);
-    ft_putchar_fd('\n', 1);
-    tmp = tmp->next;
-    if (tmp == *top) {
-      break;
-    }
-  }
-}
-
-
 void clean_stack(t_stack **stack) {
   long int last;
   t_stack *tmp;

@@ -4,6 +4,11 @@
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
 
+#define CNRM "\x1B[0m"
+#define CRED "\x1B[31m"
+#define CGRN "\x1B[32m"
+#define CBLU "\x1B[34m"
+
 #include "./libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -58,7 +63,6 @@ int is_queue_sorted(t_args_queue *queue);
 
 // stack
 void populate_stack(t_frame *frame);
-void print_stack(t_stack *stack);
 void clean_stack(t_stack **stack);
 void push_stack_node(t_stack **stack, t_stack *new_node);
 int get_stack_size(t_stack *stack);

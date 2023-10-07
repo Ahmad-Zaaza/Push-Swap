@@ -15,8 +15,7 @@ static int	check_duplicates(t_frame *frame)
 		{
 			if (tmp->value == tmp2->value)
 			{
-				ft_putstr_fd("Error\n", 2);
-				ft_putstr_fd("Invalid argument, duplicate found.\n", 2);
+				print_error("Invalid argument, duplicate found.");
 				return (0);
 			}
 			tmp2 = tmp2->next;
