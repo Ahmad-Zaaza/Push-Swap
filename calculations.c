@@ -77,7 +77,6 @@ void find_cheapest_move(t_frame *frame) {
       // +1 is the push move
       frame->cheapest_moves = a_moves + b_moves + 1;
       frame->cheapest_value = stack->data;
-      set_new_highest_lowest(frame, frame->cheapest_value);
       set_number_of_rotations(frame, a_moves, b_moves);
     }
     if (stack->next == frame->a)

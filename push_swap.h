@@ -33,8 +33,6 @@ typedef struct s_frame {
   int size;
   int b_highest;
   int b_lowest;
-  int b_new_highest;
-  int b_new_lowest;
   int cheapest_value;
   int cheapest_moves;
   int a_rotations;
