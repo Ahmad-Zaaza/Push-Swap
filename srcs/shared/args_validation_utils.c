@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 int get_num_args(char **str) {
   int i;

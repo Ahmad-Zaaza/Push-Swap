@@ -6,13 +6,11 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 01:35:58 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/08 02:58:07 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:47:29 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "push_swap.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
 
 static void clean_strings(char *a, char *b) {
   free(a);

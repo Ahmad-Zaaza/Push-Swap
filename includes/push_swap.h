@@ -9,7 +9,7 @@
 #define CGRN "\x1B[32m"
 #define CBLU "\x1B[34m"
 
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

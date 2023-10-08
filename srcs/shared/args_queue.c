@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void init_queue(t_args_queue *queue) {
   queue->head = NULL;

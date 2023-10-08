@@ -1,6 +1,4 @@
-#include "libft/libft.h"
-#include "push_swap.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
 
 static int	check_duplicates(t_frame *frame)
 {

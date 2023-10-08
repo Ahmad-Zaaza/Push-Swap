@@ -6,12 +6,11 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:12 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/03 01:47:52 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/08 17:48:37 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include <stdio.h>
+#include "../../includes/push_swap.h"
 
 void print_operation(char *operation, char stack, t_frame *frame) {
   if (frame->print_stacks) {
