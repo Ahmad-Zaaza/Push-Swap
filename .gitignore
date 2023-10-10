@@ -1,5 +1,4 @@
 **/*.o
 **/*.a
-push_swap
 test_check.txt
 traces.txt
