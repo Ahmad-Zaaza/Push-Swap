@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 21:08:43 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/11 01:55:46 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/12 01:25:10 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@
 # include <unistd.h>
 
 
-int					ft_isalpha(int c);
-
 int					ft_isdigit(int c);
 
 int					ft_isalnum(int c);
-
-int					ft_isascii(int c);
 
 int					ft_isprint(int c);
 
@@ -34,7 +30,7 @@ int					ft_toupper(int c);
 
 int					ft_tolower(int c);
 
-long int					ft_atoi(const char *str);
+long int			ft_atoi(const char *str);
 
 void				*ft_memset(void *b, int c, size_t len);
 

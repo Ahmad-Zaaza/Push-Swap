@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 14:53:14 by azaaza            #+#    #+#             */
-/*   Updated: 2023/07/14 21:12:36 by ahmadzaaza       ###   ########.fr       */
+/*   Created: 2023/10/12 01:25:42 by azaaza            #+#    #+#             */
+/*   Updated: 2023/10/12 01:26:31 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
-{
-	return (c >= 0 && c <= 127);
+#include "../../includes/push_swap.h"
+
+int main(int argc, char **argv) {
+  t_frame frame;
+
+  create_frame(&frame);
+  validate_args(argc, argv, &frame);
+
+  return (0);
 }

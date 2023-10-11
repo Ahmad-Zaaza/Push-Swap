@@ -6,7 +6,7 @@
 #    By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 00:54:55 by azaaza            #+#    #+#              #
-#    Updated: 2023/10/11 02:04:21 by azaaza           ###   ########.fr        #
+#    Updated: 2023/10/12 01:21:51 by azaaza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,18 +54,25 @@ $(OBJS_DIR):
 
 $(NAME): $(OBJ_PATH)
 	@make -C libft
-	@gcc $(PUSH_SWAP_OBJ_PATH) $(SHARED_OBJ_PATH) $(LIBS_FLAGS) -o $(NAME) \
-	-I includes -I libft/includes
+	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ_PATH) $(SHARED_OBJ_PATH) $(LIBS_FLAGS) -o $(NAME) \
+	-I includes -I libft
 
 $(PUSH_SWAP_OBJ_PATH): $(PUSH_SWAP_SRCS_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) $(PUSH_SWAP_OBJ)
 
 $(SHARED_OBJ_PATH): $(SHARED_SRCS_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MAKE) $(SHARED_OBJ)
+
+
+$(PUSH_SWAP_OBJ):
+	@$(CC) $(CFLAGS) -c $(PUSH_SWAP_SRCS_DIR)$(@:%.o=%.c) -o $(OBJS_DIR)$@
+	
+$(SHARED_OBJ): 
+	@$(CC) $(CFLAGS) -c $(SHARED_SRCS_DIR)$(@:%.o=%.c) -o $(OBJS_DIR)$@
 
 clean:
 	@make clean -C libft
-	rm -f $(OBJECTS)
+	rm -f $(OBJ_PATH)
 
 fclean: clean
 	@make fclean -C libft
