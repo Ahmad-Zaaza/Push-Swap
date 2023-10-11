@@ -47,6 +47,8 @@ typedef struct s_frame {
 
 } t_frame;
 
+typedef void (*op_fun_ptr)(t_frame *frame);
+
 // validation
 void validate_args(int argc, char **argv, t_frame *frame);
 int get_num_args(char **str);
