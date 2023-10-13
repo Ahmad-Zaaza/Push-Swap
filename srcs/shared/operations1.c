@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:12 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/08 17:48:37 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/13 22:55:22 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void print_operation(char *operation, char stack, t_frame *frame) {
   }
 }
 
-void swap(t_frame *frame, char name, int print) {
+void swap(t_frame *frame, char name) {
   t_stack **stack;
   long int tmp;
 
@@ -35,47 +35,9 @@ void swap(t_frame *frame, char name, int print) {
   tmp = (*stack)->data;
   (*stack)->data = (*stack)->next->data;
   (*stack)->next->data = tmp;
-  if (print) {
+  if (frame->print_operations) {
     print_operation("s", name, frame);
   }
 }
 
-void ss(t_frame *frame) {
-  swap(frame, 'a', 0);
-  swap(frame, 'b', 0);
-  print_operation("s", 's', frame);
-}
 
-void pa(t_frame *frame) {
-  t_stack *to_move;
-
-  to_move = frame->b;
-  if (!to_move)
-    return;
-  if (to_move == to_move->next)
-    frame->b = NULL;
-  else {
-    (frame->b)->next->prev = (frame->b)->prev;
-    (frame->b)->prev->next = (frame->b)->next;
-    (frame->b) = (frame->b)->next;
-  }
-  push_stack_node(&frame->a, to_move);
-  print_operation("p", 'a', frame);
-}
-
-void pb(t_frame *frame) {
-  t_stack *to_move;
-
-  to_move = frame->a;
-  if (!to_move)
-    return;
-  if (frame->a == frame->a->next)
-    frame->a = NULL;
-  else {
-    (frame->a)->next->prev = (frame->a)->prev;
-    (frame->a)->prev->next = (frame->a)->next;
-    (frame->a) = (frame->a)->next;
-  }
-  push_stack_node(&frame->b, to_move);
-  print_operation("p", 'b', frame);
-}

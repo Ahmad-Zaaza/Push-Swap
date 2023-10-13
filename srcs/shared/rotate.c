@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 01:53:32 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/13 22:45:04 by azaaza           ###   ########.fr       */
+/*   Created: 2023/10/13 22:45:58 by azaaza            #+#    #+#             */
+/*   Updated: 2023/10/13 23:09:49 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void sa(t_frame *frame) { swap(frame, 'a'); }
-void sb(t_frame *frame) { swap(frame, 'b'); }
+void ra(t_frame *frame) { rotate(frame, 'a'); }
+void rb(t_frame *frame) { rotate(frame, 'b'); }
+void rr(t_frame *frame) {
+  frame->print_operations = 0;
+  ra(frame);
+  rb(frame);
+  frame->print_operations = 1;
+  if (frame->print_operations)
+    print_operation("r", 'r', frame);
+}

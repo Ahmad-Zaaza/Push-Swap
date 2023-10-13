@@ -6,7 +6,7 @@
 #    By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 00:54:55 by azaaza            #+#    #+#              #
-#    Updated: 2023/10/12 01:21:51 by azaaza           ###   ########.fr        #
+#    Updated: 2023/10/13 22:45:44 by azaaza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SHARED_SRCS_DIR = $(SRCS_DIR)/shared/
 
 
 PUSH_SWAP_SRCS = calculations.c push_swap.c sort_three.c sort_utils.c sort.c stack_utils.c stack.c
-SHARED_SRCS =  args_validation.c args_validation_utils.c args_queue.c operations1.c operations2.c frame.c error.c print_stacks.c
+SHARED_SRCS =  args_validation.c args_validation_utils.c args_queue.c operations1.c operations2.c frame.c error.c print_stacks.c \
+				swap.c push.c rotate.c reverse_rotate.c
 
 PUSH_SWAP_SRCS_PATH = $(PUSH_SWAP_SRCS:%=$(PUSH_SWAP_SRCS_DIR)%)
 SHARED_SRCS_PATH = $(SHARED_SRCS:%=$(SHARED_SRCS_DIR)%)

@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/08 17:48:37 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/13 23:03:03 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ static void apply_rotations(t_frame *frame) {
     frame->b_r_rotations--;
   }
   while (frame->a_rotations > 0) {
-    rotate(frame, 'a', 1);
+    ra(frame);
     frame->a_rotations--;
   }
   while (frame->b_rotations > 0) {
-    rotate(frame, 'b', 1);
+    rb(frame);
     frame->b_rotations--;
   }
   while (frame->a_r_rotations > 0) {
-    r_rotate(frame, 'a', 1);
+    rra(frame);
     frame->a_r_rotations--;
   }
   while (frame->b_r_rotations > 0) {
-    r_rotate(frame, 'b', 1);
+    rrb(frame);
     frame->b_r_rotations--;
   }
 }
@@ -67,7 +67,7 @@ static void start_sorting(t_frame *frame) {
     frame->b_highest = frame->b->data;
     frame->b_lowest = frame->b->next->data;
   } else {
-    rotate(frame, 'b', 1);
+    rb(frame);
     frame->b_highest = frame->b->data;
     frame->b_lowest = frame->b->next->data;
   }

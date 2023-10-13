@@ -35,6 +35,7 @@ typedef struct s_frame {
   t_stack *b;
   t_args_queue args_queue;
   int print_stacks;
+  int print_operations;
   int size;
   int b_highest;
   int b_lowest;
@@ -68,18 +69,29 @@ void populate_stack(t_frame *frame);
 void clean_stack(t_stack **stack);
 void push_stack_node(t_stack **stack, t_stack *new_node);
 int get_stack_size(t_stack *stack);
-void print_stacks(t_frame *frame);
 
-// operations
-void print_operation(char *operation, char stack, t_frame *frame);
-void swap(t_frame *frame, char name, int print);
+/* OPERATIONS */
+void rotate(t_frame *frame, char name);
+void r_rotate(t_frame *frame, char name);
+void swap(t_frame *frame, char name);
+void sa(t_frame *frame);
+void sb(t_frame *frame);
 void pa(t_frame *frame);
 void pb(t_frame *frame);
-void ss(t_frame *frame);
-void rotate(t_frame *frame, char name, int print);
+void ra(t_frame *frame);
+void rb(t_frame *frame);
+void rra(t_frame *frame);
+void rrb(t_frame *frame);
 void rr(t_frame *frame);
-void r_rotate(t_frame *frame, char name, int print);
 void rrr(t_frame *frame);
+
+
+
+/* PRINTING */
+void print_operation(char *operation, char stack, t_frame *frame);
+void print_error(char *message);
+void print_stacks(t_frame *frame);
+
 
 // sort
 void sort_three(t_frame *frame, char stack_name);
@@ -92,7 +104,6 @@ int is_rotate(t_stack *stack);
 // Frame
 void create_frame(t_frame *frame);
 
-void print_error(char *message);
 
 // stack_utils
 int moves_to_top(t_stack *stack, int value);
