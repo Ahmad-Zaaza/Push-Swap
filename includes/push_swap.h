@@ -57,7 +57,7 @@ int is_str_digit(char *str);
 void cleanup_splitted(char **str, int size);
 
 // queue
-void init_queue(t_args_queue *queue);
+void init__args_queue(t_args_queue *queue);
 void enqueue(t_args_queue *queue, int value);
 int dequeue(t_args_queue *queue);
 void cleanup_queue(t_args_queue *args_queue);

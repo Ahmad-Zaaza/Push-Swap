@@ -1,6 +1,6 @@
 #include "../../includes/push_swap.h"
 
-void init_queue(t_args_queue *queue) {
+void init__args_queue(t_args_queue *queue) {
   queue->head = NULL;
   queue->tail = NULL;
 }
