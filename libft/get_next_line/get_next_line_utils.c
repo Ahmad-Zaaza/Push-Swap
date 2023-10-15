@@ -14,15 +14,12 @@ int	hash_code(int key)
 int	has_newline(t_queue *queue)
 {
 	t_list	*tmp;
-	int		i;
 
 	tmp = queue->first;
 	while (tmp)
 	{
-		i = 0;
 		if (tmp->content == '\n')
 			return (1);
-		i++;
 		tmp = tmp->next;
 	}
 	return (0);
