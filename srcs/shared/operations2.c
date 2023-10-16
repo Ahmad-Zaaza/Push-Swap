@@ -11,9 +11,7 @@ void	rotate(t_frame *frame, char name)
 	if (*stack)
 		*stack = (*stack)->next;
 	if (frame->print_operations)
-	{
 		print_operation("r", name, frame);
-	}
 }
 
 void	r_rotate(t_frame *frame, char name)
@@ -27,7 +25,5 @@ void	r_rotate(t_frame *frame, char name)
 	if (*stack)
 		*stack = (*stack)->prev;
 	if (frame->print_operations)
-	{
 		print_operation("rr", name, frame);
-	}
 }

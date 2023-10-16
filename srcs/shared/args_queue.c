@@ -12,10 +12,7 @@ void	enqueue(t_frame *frame, int value)
 
 	new = (t_arg_node *)malloc(sizeof(t_arg_node));
 	if (!new)
-	{
-		print_error("Malloc failed in args queue.");
 		return (push_swap_error(frame));
-	}
 	new->value = value;
 	new->next = NULL;
 	if (!frame->args_queue.head)

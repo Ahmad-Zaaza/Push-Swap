@@ -1,29 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/25 10:51:17 by azaaza            #+#    #+#             */
+/*   Updated: 2023/10/17 02:11:00 by ahmadzaaza       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
-
-void	init_queue(t_queue *queue)
-{
-	queue->first = NULL;
-	queue->last = NULL;
-}
-
-int	hash_code(int key)
-{
-	return (key % MAX_FD);
-}
-
-int	has_newline(t_queue *queue)
-{
-	t_list	*tmp;
-
-	tmp = queue->first;
-	while (tmp)
-	{
-		if (tmp->content == '\n')
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
 
 char	*get_line(t_queue *queue)
 {
@@ -105,7 +92,7 @@ void	push_queue(t_queue *queue, char content)
 
 t_list	*ft_lstnew(char content)
 {
-	t_list	*lst;
+	t_list *lst;
 
 	lst = (t_list *)malloc(sizeof(t_list));
 	if (!lst)
@@ -113,9 +100,4 @@ t_list	*ft_lstnew(char content)
 	lst->content = content;
 	lst->next = NULL;
 	return (lst);
-}
-
-int	queue_empty(t_queue *queue)
-{
-	return (!queue->first);
 }

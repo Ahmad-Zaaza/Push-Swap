@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:12 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/15 19:35:31 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/17 02:03:21 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 void	print_operation(char *operation, char stack, t_frame *frame)
 {
 	if (frame->print_stacks)
-	{
 		print_stacks(frame);
-	}
 	else
 	{
 		ft_putstr_fd(operation, 1);

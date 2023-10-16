@@ -61,10 +61,7 @@ void	populate_stack(t_frame *frame)
 		value = dequeue(&frame->args_queue);
 		new_node = create_stack_node(value);
 		if (!new_node)
-		{
-			print_error("Error in mallocing new stack node");
 			return (push_swap_error(frame));
-		}
 		push_stack_node(&frame->a, new_node);
 		i++;
 	}

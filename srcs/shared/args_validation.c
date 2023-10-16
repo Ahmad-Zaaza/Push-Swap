@@ -12,10 +12,7 @@ static int	check_duplicates(t_frame *frame)
 		while (tmp2)
 		{
 			if (tmp->value == tmp2->value)
-			{
-				print_error("Invalid argument, duplicate found.");
 				return (0);
-			}
 			tmp2 = tmp2->next;
 		}
 		tmp = tmp->next;
@@ -29,16 +26,10 @@ static int	validate_and_populate_str(char *str, t_frame *frame)
 	long int	value;
 
 	if (!is_str_digit(str))
-	{
-		print_error("Invalid argument, found non integer character");
 		return (0);
-	}
 	value = ft_atoi(str);
 	if (value > INT_MAX || value < INT_MIN)
-	{
-		print_error("Invalid argument, integer overflow");
 		return (0);
-	}
 	enqueue(frame, value);
 	return (1);
 }

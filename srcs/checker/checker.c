@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:25:42 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/17 01:44:53 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/17 02:32:01 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int argc, char **argv)
 	t_frame frame;
 
 	create_frame(&frame);
+	frame.print_operations = 0;
 	validate_args(argc, argv, &frame);
 	if (!is_queue_sorted(&frame.args_queue))
 	{

@@ -91,7 +91,7 @@ void					rrr(t_frame *frame);
 /* PRINTING */
 void					print_operation(char *operation, char stack,
 							t_frame *frame);
-void					print_error(char *message);
+void					print_error();
 void					print_stacks(t_frame *frame);
 
 /* SORTING */
