@@ -10,20 +10,19 @@
 # define CBLU "\x1B[34m"
 
 # include "../libft/libft.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_stack
 {
-	int					data;
+	long int			data;
 	struct s_stack		*prev;
 	struct s_stack		*next;
 }						t_stack;
 
 typedef struct s_arg_node
 {
-	int					value;
+	long int			value;
 	struct s_arg_node	*next;
 }						t_arg_node;
 
@@ -41,8 +40,8 @@ typedef struct s_frame
 	int					print_stacks;
 	int					print_operations;
 	int					size;
-	int					b_highest;
-	int					b_lowest;
+	long int			b_highest;
+	long int			b_lowest;
 	int					cheapest_value;
 	int					cheapest_moves;
 	int					a_rotations;
@@ -54,21 +53,21 @@ typedef struct s_frame
 
 typedef void			(*op_fun_ptr)(t_frame *frame);
 
-// validation
+/* VALIDATION */
 void					validate_args(int argc, char **argv, t_frame *frame);
 int						get_num_args(char **str);
 int						is_str_digit(char *str);
 void					cleanup_splitted(char **str, int size);
 
-// queue
+/* QUEUE*/
 void					init__args_queue(t_args_queue *queue);
-void					enqueue(t_args_queue *queue, int value);
-int						dequeue(t_args_queue *queue);
+void					enqueue(t_frame *frame, int value);
+long int				dequeue(t_args_queue *queue);
 void					cleanup_queue(t_args_queue *args_queue);
 int						get_queue_size(t_args_queue *queue);
 int						is_queue_sorted(t_args_queue *queue);
 
-// stack
+/* STACK */
 void					populate_stack(t_frame *frame);
 void					clean_stack(t_stack **stack);
 void					push_stack_node(t_stack **stack, t_stack *new_node);
@@ -95,26 +94,24 @@ void					print_operation(char *operation, char stack,
 void					print_error(char *message);
 void					print_stacks(t_frame *frame);
 
-// sort
+/* SORTING */
 void					sort_three(t_frame *frame, char stack_name);
-int						get_max(t_stack *stack);
-int						get_min(t_stack *stack);
+long int				get_max(t_stack *stack);
+long int				get_min(t_stack *stack);
 int						is_stack_sorted(t_stack *stack);
 void					sort(t_frame *frame);
 int						is_rotate(t_stack *stack);
-
-// Frame
-void					create_frame(t_frame *frame);
-
-// stack_utils
-int						moves_to_top(t_stack *stack, int value);
-int						should_rotate_to_top(t_stack *stack, int value);
-void					set_new_highest_lowest(t_frame *frame, int value);
-
-// calculations
-
-int						calculate_b_moves(t_frame *frame, int value);
+int						calculate_b_moves(t_frame *frame, long int value);
 void					find_cheapest_move(t_frame *frame);
 void					reset_rotations(t_frame *frame);
+
+/* FRAME */
+void					create_frame(t_frame *frame);
+void					push_swap_error(t_frame *frame);
+
+/* STACK UTILS*/
+int						moves_to_top(t_stack *stack, long int value);
+int						should_rotate_to_top(t_stack *stack, long int value);
+void					set_new_highest_lowest(t_frame *frame, long int value);
 
 #endif

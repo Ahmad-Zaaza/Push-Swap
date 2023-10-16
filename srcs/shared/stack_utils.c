@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 01:08:38 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/15 19:35:31 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/17 01:23:44 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_value_index(t_stack *stack, int value)
 	return (index);
 }
 
-int	should_rotate_to_top(t_stack *stack, int value)
+int	should_rotate_to_top(t_stack *stack, long int value)
 {
 	int	stack_size;
 	int	index;
@@ -35,7 +35,7 @@ int	should_rotate_to_top(t_stack *stack, int value)
 	return ((index + 1) <= (stack_size / 2));
 }
 
-int	moves_to_top(t_stack *stack, int value)
+int	moves_to_top(t_stack *stack, long int value)
 {
 	int	moves;
 	int	stack_size;
@@ -70,7 +70,7 @@ int	get_stack_size(t_stack *stack)
 	return (size);
 }
 
-void	set_new_highest_lowest(t_frame *frame, int value)
+void	set_new_highest_lowest(t_frame *frame, long int value)
 {
 	if (value > frame->b_highest)
 		frame->b_highest = value;

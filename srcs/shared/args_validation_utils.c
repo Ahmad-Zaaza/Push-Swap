@@ -17,10 +17,7 @@ int	is_str_digit(char *str)
 
 	i = 0;
 	if (!str[i])
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (0);
-	}
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
@@ -49,9 +46,7 @@ int	is_queue_sorted(t_args_queue *queue)
 	while (tmp->next)
 	{
 		if (tmp->value < tmp->next->value)
-		{
 			return (0);
-		}
 		tmp = tmp->next;
 	}
 	cleanup_queue(queue);

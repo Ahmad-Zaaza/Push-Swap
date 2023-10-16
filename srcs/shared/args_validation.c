@@ -39,7 +39,7 @@ static int	validate_and_populate_str(char *str, t_frame *frame)
 		print_error("Invalid argument, integer overflow");
 		return (0);
 	}
-	enqueue(&frame->args_queue, value);
+	enqueue(frame, value);
 	return (1);
 }
 
@@ -65,10 +65,7 @@ static void	check_args(int size, char **str, t_frame *frame, int cleanup)
 	if (cleanup)
 		cleanup_splitted(str, size);
 	if (!success)
-	{
-		cleanup_queue(&frame->args_queue);
-		exit(1);
-	}
+		push_swap_error(frame);
 }
 
 void	validate_args(int argc, char **argv, t_frame *frame)

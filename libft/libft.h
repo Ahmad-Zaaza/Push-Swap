@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 21:08:43 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/15 15:40:24 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/15 20:09:53 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "./get_next_line/get_next_line.h"
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 int			ft_isdigit(int c);
@@ -43,6 +42,8 @@ char		*ft_strrchr(const char *str, int c);
 size_t		ft_strlcpy(char *dest, char *src, size_t dest_size);
 
 size_t		ft_strlcat(char *dest, char *src, size_t dest_size);
+
+char		*ft_strstr(const char *haystack,const char *needle);
 
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 

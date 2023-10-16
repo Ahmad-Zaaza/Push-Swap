@@ -11,3 +11,10 @@ void	print_error(char *message)
 	}
 	ft_putstr_fd(CNRM, 2);
 }
+
+void	push_swap_error(t_frame *frame)
+{
+	cleanup_queue(&frame->args_queue);
+	clean_stack(&frame->a);
+	exit(1);
+}

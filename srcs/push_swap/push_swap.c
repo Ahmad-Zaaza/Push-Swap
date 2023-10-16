@@ -10,15 +10,10 @@ int	main(int argc, char **argv)
 	{
 		populate_stack(&frame);
 		if (frame.size <= 3)
-		{
 			sort_three(&frame, 'a');
-		}
 		else
-		{
 			sort(&frame);
-		}
 		clean_stack(&frame.a);
 	}
-
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 00:20:26 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/15 15:40:07 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/17 01:47:09 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #endif
 
 #include "fcntl.h"
-#include "stdio.h"
 #include "stdlib.h"
 #include "unistd.h"
 

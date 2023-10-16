@@ -2,9 +2,9 @@
 
 int	find_pivot_b_node(t_frame *frame, int value)
 {
-	int		pivot;
-	int		diff;
-	t_stack	*tmp;
+	long int	pivot;
+	long int	diff;
+	t_stack		*tmp;
 
 	if (value > frame->b_highest || value < frame->b_lowest)
 		return (frame->b_highest);
@@ -33,9 +33,9 @@ int	find_pivot_b_node(t_frame *frame, int value)
 	return (pivot);
 }
 
-int	calculate_b_moves(t_frame *frame, int value)
+int	calculate_b_moves(t_frame *frame, long int value)
 {
-	int	b_pivot;
+	long int	b_pivot;
 
 	b_pivot = find_pivot_b_node(frame, value);
 	if (b_pivot == frame->b->data)

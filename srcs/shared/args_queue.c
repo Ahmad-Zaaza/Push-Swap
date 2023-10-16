@@ -6,30 +6,33 @@ void	init__args_queue(t_args_queue *queue)
 	queue->tail = NULL;
 }
 
-void	enqueue(t_args_queue *queue, int value)
+void	enqueue(t_frame *frame, int value)
 {
 	t_arg_node	*new;
 
 	new = (t_arg_node *)malloc(sizeof(t_arg_node));
 	if (!new)
-		exit(1);
+	{
+		print_error("Malloc failed in args queue.");
+		return (push_swap_error(frame));
+	}
 	new->value = value;
 	new->next = NULL;
-	if (!queue->head)
+	if (!frame->args_queue.head)
 	{
-		queue->head = new;
-		queue->tail = new;
+		frame->args_queue.head = new;
+		frame->args_queue.tail = new;
 	}
 	else
 	{
-		queue->tail->next = new;
-		queue->tail = new;
+		frame->args_queue.tail->next = new;
+		frame->args_queue.tail = new;
 	}
 }
 
-int	dequeue(t_args_queue *queue)
+long int	dequeue(t_args_queue *queue)
 {
-	int			data;
+	long int	data;
 	t_arg_node	*tmp;
 
 	tmp = queue->head;
