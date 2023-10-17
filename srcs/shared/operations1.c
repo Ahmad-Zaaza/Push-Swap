@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 19:20:12 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/17 02:03:21 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/17 23:24:15 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,5 @@ void	swap(t_frame *frame, char name)
 	(*stack)->data = (*stack)->next->data;
 	(*stack)->next->data = tmp;
 	if (frame->print_operations)
-	{
 		print_operation("s", name, frame);
-	}
 }

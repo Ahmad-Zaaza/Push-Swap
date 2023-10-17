@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/15 19:35:31 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/17 23:33:55 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,62 +14,55 @@
 
 static void	apply_rotations(t_frame *frame)
 {
-	while (frame->a_rotations > 0 && frame->b_rotations > 0)
+	while (frame->a_rotations && frame->b_rotations)
 	{
 		rr(frame);
 		frame->a_rotations--;
 		frame->b_rotations--;
 	}
-	while (frame->a_r_rotations > 0 && frame->b_r_rotations > 0)
+	while (frame->a_r_rotations && frame->b_r_rotations)
 	{
 		rrr(frame);
 		frame->a_r_rotations--;
 		frame->b_r_rotations--;
 	}
-	while (frame->a_rotations > 0)
-	{
+	while (frame->a_rotations-- > 0)
 		ra(frame);
-		frame->a_rotations--;
-	}
-	while (frame->b_rotations > 0)
-	{
+	while (frame->b_rotations-- > 0)
 		rb(frame);
-		frame->b_rotations--;
-	}
-	while (frame->a_r_rotations > 0)
-	{
+	while (frame->a_r_rotations-- > 0)
 		rra(frame);
-		frame->a_r_rotations--;
-	}
-	while (frame->b_r_rotations > 0)
-	{
+	while (frame->b_r_rotations-- > 0)
 		rrb(frame);
-		frame->b_r_rotations--;
-	}
 }
 
+/**
+- get information about the best element to push to B
+- rotate the stacks based on the information set in the frame
+- now it's time to push after we did the necessery rotations
+- reset the information for the next element
+*/
 static void	move_to_b(t_frame *frame)
 {
-	// get information about the best element to push to B
 	find_cheapest_move(frame);
-	// rotate the stacks based on the information set in the frame
 	apply_rotations(frame);
-	// now it's time to push after we did the necessery rotations
 	pb(frame);
-	// update the highest and lowest element of B
 	set_new_highest_lowest(frame, frame->cheapest_value);
-	// reset the information for the next element
 	frame->cheapest_moves = 0;
 	reset_rotations(frame);
 }
 
+/**
+- push the first two elements of A to B,
+- then set the highest and lowest values of B in order to establish a baseline.
+- start pushing each element to it's correct position in B
+- until we reach the end of A
+*/
 static void	start_sorting(t_frame *frame)
 {
 	int	size;
 
 	size = get_stack_size(frame->a);
-	// push the first two elements of A to B,
-	// then set the highest and lowest values of B in order to establish a baseline
 	pb(frame);
 	pb(frame);
 	if (frame->b->data > frame->b->next->data)
@@ -84,8 +77,6 @@ static void	start_sorting(t_frame *frame)
 		frame->b_lowest = frame->b->next->data;
 	}
 	size -= 2;
-	// start pushing each element to it's correct position in B
-	// until we reach the end of A
 	while (size > 0)
 	{
 		move_to_b(frame);

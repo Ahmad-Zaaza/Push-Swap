@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 22:46:39 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/17 02:20:09 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/17 23:37:28 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	rra(t_frame *frame)
 {
 	r_rotate(frame, 'a');
 }
+
 void	rrb(t_frame *frame)
 {
 	r_rotate(frame, 'b');
 }
+
 void	rrr(t_frame *frame)
 {
 	if (frame->print_operations)
