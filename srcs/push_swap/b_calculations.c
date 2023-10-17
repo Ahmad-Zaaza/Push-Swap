@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   b_calculations.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/18 00:46:01 by ahmadzaaza        #+#    #+#             */
+/*   Updated: 2023/10/18 00:55:39 by ahmadzaaza       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/push_swap.h"
 
-int	find_pivot_b_node(t_frame *frame, int value)
+static long int	find_pivot_b_node(t_frame *frame, int value)
 {
 	long int	pivot;
 	long int	diff;
@@ -33,7 +45,7 @@ int	find_pivot_b_node(t_frame *frame, int value)
 	return (pivot);
 }
 
-int	calculate_b_moves(t_frame *frame, long int value)
+static int	calculate_b_moves(t_frame *frame, long int value)
 {
 	long int	b_pivot;
 

@@ -91,7 +91,7 @@ void					rrr(t_frame *frame);
 /* PRINTING */
 void					print_operation(char *operation, char stack,
 							t_frame *frame);
-void					print_error();
+void					print_error(void);
 void					print_stacks(t_frame *frame);
 
 /* SORTING */
@@ -101,9 +101,10 @@ long int				get_min(t_stack *stack);
 int						is_stack_sorted(t_stack *stack);
 void					sort(t_frame *frame);
 int						is_rotate(t_stack *stack);
-int						calculate_b_moves(t_frame *frame, long int value);
 void					find_cheapest_move(t_frame *frame);
 void					reset_rotations(t_frame *frame);
+long int				find_pivot_a_node(t_frame *frame);
+void					find_correct_position_in_a(t_frame *frame, long int *a_highest,long int *a_lowest);
 
 /* FRAME */
 void					create_frame(t_frame *frame);
