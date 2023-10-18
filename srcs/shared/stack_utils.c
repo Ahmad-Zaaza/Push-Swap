@@ -25,17 +25,20 @@ int	get_value_index(t_stack *stack, int value)
 	return (index);
 }
 
-int	should_rotate_to_top(t_stack *stack, long int value)
+int	should_rotate_to(char direction, t_stack *stack, long int value)
 {
 	int	stack_size;
 	int	index;
 
 	stack_size = get_stack_size(stack);
 	index = get_value_index(stack, value);
-	return ((index + 1) <= (stack_size / 2));
+	if(direction == 't')
+		return ((index + 1) <= (stack_size / 2));
+	return ((index + 1) >= (stack_size / 2));
+	
 }
 
-int	moves_to_top(t_stack *stack, long int value)
+int	moves_to(char direction, t_stack *stack, long int value)
 {
 	int	moves;
 	int	stack_size;
@@ -44,6 +47,12 @@ int	moves_to_top(t_stack *stack, long int value)
 	moves = 0;
 	stack_size = get_stack_size(stack);
 	index = get_value_index(stack, value);
+	if(direction == 't')
+		if (index == 0)
+			return (0);
+	if (direction == 'b')
+		if (index == stack_size - 1)
+			return (0);
 	if ((index + 1) <= (stack_size / 2))
 		moves = index;
 	else

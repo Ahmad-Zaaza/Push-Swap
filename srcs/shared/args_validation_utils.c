@@ -32,12 +32,16 @@ int	is_str_digit(char *str)
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if(!str[i])
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}
+	if(i > 11)
+		return (0);
 	return (1);
 }
 

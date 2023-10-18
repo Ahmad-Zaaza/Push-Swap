@@ -52,7 +52,7 @@ static int	calculate_b_moves(t_frame *frame, long int value)
 	b_pivot = find_pivot_b_node(frame, value);
 	if (b_pivot == frame->b->data)
 		return (0);
-	return (moves_to_top(frame->b, b_pivot));
+	return (moves_to('t', frame->b, b_pivot));
 }
 
 static void	set_rotations(t_frame *frame, int a_moves_to_top,
@@ -61,13 +61,13 @@ static void	set_rotations(t_frame *frame, int a_moves_to_top,
 	reset_rotations(frame);
 	if (b_moves_to_top > 0)
 	{
-		if (should_rotate_to_top(frame->b, find_pivot_b_node(frame,
+		if (should_rotate_to('t',frame->b, find_pivot_b_node(frame,
 					frame->cheapest_value)))
 			frame->b_rotations = b_moves_to_top;
 		else
 			frame->b_r_rotations = b_moves_to_top;
 	}
-	if (should_rotate_to_top(frame->a, frame->cheapest_value))
+	if (should_rotate_to('t', frame->a, frame->cheapest_value))
 		frame->a_rotations = a_moves_to_top;
 	else
 		frame->a_r_rotations = a_moves_to_top;
@@ -84,7 +84,7 @@ void	find_cheapest_move(t_frame *frame)
 	{
 		a_moves = 0;
 		b_moves = 0;
-		a_moves = moves_to_top(frame->a, stack->data);
+		a_moves = moves_to('t', frame->a, stack->data);
 		b_moves = calculate_b_moves(frame, stack->data);
 		if (!frame->cheapest_moves || (a_moves + b_moves
 				+ 1) < frame->cheapest_moves)
