@@ -61,7 +61,7 @@ void					cleanup_splitted(char **str, int size);
 
 /* QUEUE*/
 void					init__args_queue(t_args_queue *queue);
-void					enqueue(t_frame *frame, int value);
+void					enqueue(t_frame *frame, long int value);
 long int				dequeue(t_args_queue *queue);
 void					cleanup_queue(t_args_queue *args_queue);
 int						get_queue_size(t_args_queue *queue);

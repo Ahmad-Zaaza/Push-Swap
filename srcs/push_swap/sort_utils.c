@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:47:21 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 00:47:48 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/18 16:38:15 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	is_rotate(t_stack *stack)
 {
 	t_stack **top;
 	t_stack *tmp;
-	int min;
+	long int min;
 	int index;
 	int min_index;
 

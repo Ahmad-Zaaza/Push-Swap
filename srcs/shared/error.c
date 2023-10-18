@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:47:06 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 00:47:48 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/18 10:07:02 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(CNRM, 2);
+	// ft_putstr_fd(CNRM, 2);
 }
 
 void	push_swap_error(t_frame *frame)

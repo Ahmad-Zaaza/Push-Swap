@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:46:29 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 00:46:29 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/18 16:37:18 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init__args_queue(t_args_queue *queue)
 	queue->tail = NULL;
 }
 
-void	enqueue(t_frame *frame, int value)
+void	enqueue(t_frame *frame, long int value)
 {
 	t_arg_node	*new;
 
