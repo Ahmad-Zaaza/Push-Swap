@@ -116,6 +116,6 @@ void sort(t_frame *frame) {
     frame->b_r_rotations = highest_moves_to_top;
   apply_rotations(frame);
   if (!is_stack_sorted(frame->a))
-    sort_three(frame, 'a');
+    sort_three(frame);
   re_populate_a(frame);
 }

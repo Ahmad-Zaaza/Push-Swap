@@ -16,7 +16,7 @@ NAME = push_swap
 CHECKER_NAME = checker
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -fno-omit-frame-pointer -g3
+CFLAGS = -Wall -Wextra -Werror
 
 
 SRCS_DIR = ./srcs/

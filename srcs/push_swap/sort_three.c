@@ -12,34 +12,23 @@
 
 #include "../../includes/push_swap.h"
 
-void	sort_three(t_frame *frame, char stack_name)
+void	sort_three(t_frame *frame)
 {
-	t_stack **stack;
-
-	if (stack_name == 'a')
-		stack = &frame->a;
-	else
-		stack = &frame->b;
-
-	if (get_min(*stack) == (*stack)->data)
+	if (get_min(frame->a) == (frame->a)->data)
 	{
-		r_rotate(frame, stack_name);
-		swap(frame, stack_name);
+		r_rotate(frame, 'a');
+		swap(frame, 'a');
 	}
-	else if (get_max(*stack) == (*stack)->prev->data)
+	else if (get_max(frame->a) == (frame->a)->prev->data)
+		swap(frame, 'a');
+	
+	else if (get_max(frame->a) == (frame->a)->data)
 	{
-		swap(frame, stack_name);
+		rotate(frame, 'a');
+		if (!is_stack_sorted(frame->a))
+			swap(frame, 'a');
 	}
-	else if (get_max(*stack) == (*stack)->data)
-	{
-		rotate(frame, stack_name);
-		if (!is_stack_sorted(*stack))
-		{
-			swap(frame, stack_name);
-		}
-	}
-	else
-	{
-		r_rotate(frame, stack_name);
-	}
+	else	
+		r_rotate(frame, 'a');
+	
 }

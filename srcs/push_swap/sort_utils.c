@@ -46,9 +46,7 @@ long int	get_max(t_stack *stack)
 	while (tmp)
 	{
 		if (tmp->data > max)
-		{
 			max = tmp->data;
-		}
 		if (tmp->next == *top)
 			break ;
 		tmp = tmp->next;

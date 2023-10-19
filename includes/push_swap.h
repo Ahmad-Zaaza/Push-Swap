@@ -90,7 +90,7 @@ void print_error(void);
 void print_stacks(t_frame *frame);
 
 /* SORTING */
-void sort_three(t_frame *frame, char stack_name);
+void sort_three(t_frame *frame);
 long int get_max(t_stack *stack);
 long int get_min(t_stack *stack);
 int is_stack_sorted(t_stack *stack);

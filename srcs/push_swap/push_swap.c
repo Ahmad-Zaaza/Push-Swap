@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	{
 		populate_stack(&frame);
 		if (frame.size <= 3)
-			sort_three(&frame, 'a');
+			sort_three(&frame);
 		else
 			sort(&frame);
 		clean_stack(&frame.a);
