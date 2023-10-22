@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:02:08 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/18 01:48:18 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:56:15 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,8 @@ static void start_sorting(t_frame *frame) {
     frame->b_highest = frame->b->data;
     frame->b_lowest = frame->b->next->data;
   } else {
-    rb(frame);
-    frame->b_highest = frame->b->data;
-    frame->b_lowest = frame->b->next->data;
+    frame->b_highest = frame->b->next->data;
+    frame->b_lowest = frame->b->data;
   }
   size = get_stack_size(frame->a);
   while (size > 3) {
