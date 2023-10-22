@@ -6,7 +6,7 @@
 #    By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/11 00:54:55 by azaaza            #+#    #+#              #
-#    Updated: 2023/10/18 00:45:17 by ahmadzaaza       ###   ########.fr        #
+#    Updated: 2023/10/22 18:03:08 by ahmadzaaza       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ clean:
 
 fclean: clean
 	@make fclean -C libft
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER_NAME)
 
 re: fclean all
 .PHONY: all clean re fclean
