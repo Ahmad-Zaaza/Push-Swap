@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_validation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:46:23 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 00:46:23 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:24:45 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_str_digit(char *str)
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if(!str[i])
+	if (!str[i])
 		return (0);
 	while (str[i])
 	{
@@ -40,7 +40,7 @@ int	is_str_digit(char *str)
 			return (0);
 		i++;
 	}
-	if(i > 11)
+	if (i > 11)
 		return (0);
 	return (1);
 }
@@ -57,7 +57,8 @@ void	cleanup_splitted(char **str, int size)
 
 int	is_queue_sorted(t_args_queue *queue)
 {
-	t_arg_node *tmp;
+	t_arg_node	*tmp;
+
 	tmp = queue->head;
 	while (tmp->next)
 	{

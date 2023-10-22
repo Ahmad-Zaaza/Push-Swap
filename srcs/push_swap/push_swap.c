@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:47:25 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 00:47:48 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:26:26 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_frame frame;
+	t_frame	frame;
 
 	create_frame(&frame);
 	validate_args(argc, argv, &frame);
