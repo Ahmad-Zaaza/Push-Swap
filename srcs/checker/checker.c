@@ -6,7 +6,7 @@
 /*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:25:42 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/22 14:54:16 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 18:06:58 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ static t_op_fun_ptr	get_op_fun_ptr(int diff)
 	return (ops[diff]);
 }
 
-static void	read_instructions(t_frame *frame)
+static void	read_instructions(t_frame *frame, char *ops_str)
 {
 	char	*line;
 	int		diff;
-	char	ops_str[42] = "sa\n sb\n pa\n pb\n ra\n rb\n rr\n rra\n rrb\n rrr\n";
 
 	line = get_next_line(0);
 	while (line)
@@ -61,7 +60,8 @@ int	main(int argc, char **argv)
 	if (!is_queue_sorted(&frame.args_queue))
 	{
 		populate_stack(&frame);
-		read_instructions(&frame);
+		read_instructions(&frame,
+			"sa\n sb\n pa\n pb\n ra\n rb\n rr\n rra\n rrb\n rrr\n");
 		if (is_stack_sorted(frame.a))
 			ft_putstr_fd("OK\n", 1);
 		else
