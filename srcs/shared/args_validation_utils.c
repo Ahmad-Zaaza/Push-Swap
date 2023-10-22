@@ -6,7 +6,7 @@
 /*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:46:23 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/22 13:24:45 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/22 18:23:41 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	get_num_args(char **str)
 	return (i);
 }
 
-// checks if the string only contains digits and optional sign
 int	is_str_digit(char *str)
 {
 	int	i;
