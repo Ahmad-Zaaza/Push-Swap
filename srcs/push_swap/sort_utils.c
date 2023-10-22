@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:47:21 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/22 14:50:59 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 17:51:45 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,5 @@ int	is_rotate(t_stack *stack)
 		index++;
 		tmp = tmp->next;
 	}
-	if ((min_index + 1) <= get_stack_size(stack) / 2)
-		return (1);
-	return (0);
+	return ((min_index + 1) <= get_stack_size(stack) / 2);
 }
