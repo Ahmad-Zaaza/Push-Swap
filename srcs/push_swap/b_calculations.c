@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_calculations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:46:01 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/22 13:27:42 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/22 14:48:07 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ static long int	find_pivot_b_node(t_frame *frame, int value)
 	{
 		if (tmp->data < value && tmp->prev->data > value)
 		{
-			if (diff == 0)
-			{
-				diff = tmp->prev->data - tmp->data;
-				pivot = tmp->data;
-			}
-			else if (diff > tmp->prev->data - tmp->data)
+			if (diff == 0 || (diff > tmp->prev->data - tmp->data))
 			{
 				diff = tmp->prev->data - tmp->data;
 				pivot = tmp->data;

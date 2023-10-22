@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:47:21 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/22 13:23:27 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/22 14:50:59 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ long int	get_min(t_stack *stack)
 	while (tmp)
 	{
 		if (tmp->data < min)
-		{
 			min = tmp->data;
-		}
 		if (tmp->next == *top)
 			break ;
 		tmp = tmp->next;
@@ -79,5 +77,7 @@ int	is_rotate(t_stack *stack)
 		index++;
 		tmp = tmp->next;
 	}
-	return ((min_index + 1) <= get_stack_size(stack) / 2 ? 1 : 0);
+	if ((min_index + 1) <= get_stack_size(stack) / 2)
+		return (1);
+	return (0);
 }

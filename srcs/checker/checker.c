@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:25:42 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/22 13:30:36 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/22 14:54:16 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,15 @@ static void	read_instructions(t_frame *frame)
 	int		diff;
 	char	ops_str[42] = "sa\n sb\n pa\n pb\n ra\n rb\n rr\n rra\n rrb\n rrr\n";
 
-	while ((line = get_next_line(0)))
+	line = get_next_line(0);
+	while (line)
 	{
 		diff = ft_strstr(ops_str, line) - ops_str;
 		free(line);
 		if (diff < 0 || diff > 38)
 			return (push_swap_error(frame));
 		get_op_fun_ptr(diff)(frame);
+		line = get_next_line(0);
 	}
 }
 

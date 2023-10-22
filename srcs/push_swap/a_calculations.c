@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_calculations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:44:51 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/22 13:33:51 by azaaza           ###   ########.fr       */
+/*   Updated: 2023/10/22 14:47:48 by ahmadzaaza       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ long int	find_pivot_a_node(t_frame *frame)
 	{
 		if (tmp->data > frame->b->data)
 		{
-			if (diff == 0)
-			{
-				pivot = tmp->data;
-				diff = tmp->data - frame->b->data;
-			}
-			else if (diff > tmp->data - frame->b->data)
+			if (diff == 0 || (diff > tmp->data - frame->b->data))
 			{
 				pivot = tmp->data;
 				diff = tmp->data - frame->b->data;
