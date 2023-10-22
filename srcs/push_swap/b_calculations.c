@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   b_calculations.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:46:01 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 00:55:39 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:27:42 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	set_rotations(t_frame *frame, int a_moves_to_top,
 	reset_rotations(frame);
 	if (b_moves_to_top > 0)
 	{
-		if (should_rotate_to('t',frame->b, find_pivot_b_node(frame,
+		if (should_rotate_to('t', frame->b, find_pivot_b_node(frame,
 					frame->cheapest_value)))
 			frame->b_rotations = b_moves_to_top;
 		else

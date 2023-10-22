@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 01:25:42 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/17 02:32:01 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:30:36 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static op_fun_ptr	get_op_fun_ptr(int diff)
+static t_op_fun_ptr	get_op_fun_ptr(int diff)
 {
-	int			i;
-	op_fun_ptr	ops[39];
+	int				i;
+	t_op_fun_ptr	ops[39];
 
 	i = 0;
 	while (i < 39)
@@ -51,7 +51,7 @@ static void	read_instructions(t_frame *frame)
 
 int	main(int argc, char **argv)
 {
-	t_frame frame;
+	t_frame	frame;
 
 	create_frame(&frame);
 	frame.print_operations = 0;

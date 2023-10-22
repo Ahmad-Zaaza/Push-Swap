@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:47:21 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/18 16:38:15 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:23:27 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ long int	get_max(t_stack *stack)
 
 int	is_rotate(t_stack *stack)
 {
-	t_stack **top;
-	t_stack *tmp;
-	long int min;
-	int index;
-	int min_index;
+	t_stack		**top;
+	t_stack		*tmp;
+	long int	min;
+	int			index;
+	int			min_index;
 
 	top = &stack;
 	tmp = *top;

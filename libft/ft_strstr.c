@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:59:46 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/15 20:10:16 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:29:56 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@ character of the first occurrence of needle is returned.
 */
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int i;
-	int j;
-	int needle_len;
+	int	i;
+	int	j;
+	int	needle_len;
 
 	needle_len = ft_strlen(needle);
 	if (!needle_len)
 		return ((char *)haystack);
 	i = 0;
-
 	while (haystack[i])
 	{
 		j = 0;

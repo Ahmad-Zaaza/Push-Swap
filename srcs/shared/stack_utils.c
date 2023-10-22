@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 01:08:38 by azaaza            #+#    #+#             */
-/*   Updated: 2023/10/17 01:23:44 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:22:17 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ int	should_rotate_to(char direction, t_stack *stack, long int value)
 
 	stack_size = get_stack_size(stack);
 	index = get_value_index(stack, value);
-	if(direction == 't')
+	if (direction == 't')
 		return ((index + 1) <= (stack_size / 2));
 	return ((index + 1) >= (stack_size / 2));
-	
 }
 
 int	moves_to(char direction, t_stack *stack, long int value)
@@ -47,7 +46,7 @@ int	moves_to(char direction, t_stack *stack, long int value)
 	moves = 0;
 	stack_size = get_stack_size(stack);
 	index = get_value_index(stack, value);
-	if(direction == 't')
+	if (direction == 't')
 		if (index == 0)
 			return (0);
 	if (direction == 'b')

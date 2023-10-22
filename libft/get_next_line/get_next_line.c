@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmadzaaza <ahmadzaaza@student.42.fr>      +#+  +:+       +#+        */
+/*   By: azaaza <azaaza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 23:46:35 by ahmadzaaza        #+#    #+#             */
-/*   Updated: 2023/10/17 02:11:59 by ahmadzaaza       ###   ########.fr       */
+/*   Updated: 2023/10/22 13:32:33 by azaaza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*get_next_line(int fd)
 
 char	*handle_read(int fd, int readed, char *buffer, t_queue *queue)
 {
-	int i;
+	int	i;
 
 	if (readed > 0)
 	{
